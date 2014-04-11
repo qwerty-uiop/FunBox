@@ -13,6 +13,7 @@
 #import "FavouriteViewController.h"
 #import "FactClass.h"
 #import "FactsListViewController.h"
+
 @interface HomeViewController ()
 
 @end
@@ -39,7 +40,8 @@ FactsListViewController * factsListView;
     
    _version.text = displayVersionNumber;
     
-    
+    NSLog(@"Value %f",CGRectGetMaxX(self.view.frame));
+    NSLog(@"Value %f",CGRectGetMaxY(self.view.frame));
     
     [self InitializeBannerView];
     fun_facts= [[NSMutableArray alloc] initWithCapacity:3 ];

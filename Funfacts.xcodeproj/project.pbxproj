@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480B155018F7AD1200974EEA /* home_iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 480B154E18F7AD1200974EEA /* home_iPad.jpg */; };
+		480B155118F7AD1200974EEA /* home_iPad@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 480B154F18F7AD1200974EEA /* home_iPad@2x.jpg */; };
 		480FF1D818F50A5200B0A937 /* about_4_reference.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1C918F50A5200B0A937 /* about_4_reference.jpg */; };
 		480FF1D918F50A5200B0A937 /* AboutUs.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1CA18F50A5200B0A937 /* AboutUs.png */; };
 		480FF1DA18F50A5200B0A937 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1CB18F50A5200B0A937 /* Back.png */; };
@@ -55,7 +57,7 @@
 		FC5F458C18E3E19D0064BC9A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC5F458A18E3E19D0064BC9A /* InfoPlist.strings */; };
 		FC5F458E18E3E19D0064BC9A /* FunfactsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F458D18E3E19D0064BC9A /* FunfactsTests.m */; };
 		FC5F459818E3E3080064BC9A /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F459718E3E3080064BC9A /* HomeViewController.xib */; };
-		FC5F459A18E3E3400064BC9A /* HomeViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F459918E3E3400064BC9A /* HomeViewController_iPad.xib */; };
+		FC5F459A18E3E3400064BC9A /* HomeViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F459918E3E3400064BC9A /* HomeViewController~ipad.xib */; };
 		FC5F459E18E3EED80064BC9A /* JokesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F459C18E3EED80064BC9A /* JokesViewController.m */; };
 		FC5F459F18E3EED80064BC9A /* JokesViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F459D18E3EED80064BC9A /* JokesViewController_iPad.xib */; };
 		FC5F45A318E3EF050064BC9A /* FactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F45A118E3EF050064BC9A /* FactsViewController.m */; };
@@ -67,7 +69,7 @@
 		FC5F45AF18E3F2F10064BC9A /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45AE18E3F2F10064BC9A /* FavouriteViewController.xib */; };
 		FC5F45B318E3FC230064BC9A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F45B118E3FC230064BC9A /* AboutViewController.m */; };
 		FC5F45B418E3FC230064BC9A /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45B218E3FC230064BC9A /* AboutViewController.xib */; };
-		FC5F45B618E3FC4F0064BC9A /* AboutViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45B518E3FC4F0064BC9A /* AboutViewController_iPad.xib */; };
+		FC5F45B618E3FC4F0064BC9A /* AboutViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45B518E3FC4F0064BC9A /* AboutViewController~ipad.xib */; };
 		FCAFBB2F18EDCE62008EBB22 /* home.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FCAFBB2E18EDCE62008EBB22 /* home.jpg */; };
 		FCAFBB3118EDD124008EBB22 /* about.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FCAFBB3018EDD124008EBB22 /* about.jpg */; };
 		FCF6000C18ED996C00F8D970 /* FactClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF6000B18ED996C00F8D970 /* FactClass.m */; };
@@ -85,6 +87,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		480B154E18F7AD1200974EEA /* home_iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = home_iPad.jpg; sourceTree = "<group>"; };
+		480B154F18F7AD1200974EEA /* home_iPad@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home_iPad@2x.jpg"; sourceTree = "<group>"; };
+		480B155318F7AEED00974EEA /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		480FF1C918F50A5200B0A937 /* about_4_reference.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = about_4_reference.jpg; sourceTree = "<group>"; };
 		480FF1CA18F50A5200B0A937 /* AboutUs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutUs.png; sourceTree = "<group>"; };
 		480FF1CB18F50A5200B0A937 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
@@ -149,7 +154,7 @@
 		FC5F458B18E3E19D0064BC9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FC5F458D18E3E19D0064BC9A /* FunfactsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunfactsTests.m; sourceTree = "<group>"; };
 		FC5F459718E3E3080064BC9A /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		FC5F459918E3E3400064BC9A /* HomeViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController_iPad.xib; sourceTree = "<group>"; };
+		FC5F459918E3E3400064BC9A /* HomeViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "HomeViewController~ipad.xib"; sourceTree = "<group>"; };
 		FC5F459B18E3EED80064BC9A /* JokesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JokesViewController.h; sourceTree = "<group>"; };
 		FC5F459C18E3EED80064BC9A /* JokesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JokesViewController.m; sourceTree = "<group>"; };
 		FC5F459D18E3EED80064BC9A /* JokesViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JokesViewController_iPad.xib; sourceTree = "<group>"; };
@@ -165,7 +170,7 @@
 		FC5F45B018E3FC230064BC9A /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		FC5F45B118E3FC230064BC9A /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		FC5F45B218E3FC230064BC9A /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
-		FC5F45B518E3FC4F0064BC9A /* AboutViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController_iPad.xib; sourceTree = "<group>"; };
+		FC5F45B518E3FC4F0064BC9A /* AboutViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AboutViewController~ipad.xib"; sourceTree = "<group>"; };
 		FCAFBB2E18EDCE62008EBB22 /* home.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = home.jpg; sourceTree = "<group>"; };
 		FCAFBB3018EDD124008EBB22 /* about.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = about.jpg; sourceTree = "<group>"; };
 		FCF6000A18ED996C00F8D970 /* FactClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactClass.h; sourceTree = "<group>"; };
@@ -205,9 +210,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		480B155218F7AEDD00974EEA /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				480B155318F7AEED00974EEA /* Macro.h */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		480FF1C818F50A2400B0A937 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				480B154E18F7AD1200974EEA /* home_iPad.jpg */,
+				480B154F18F7AD1200974EEA /* home_iPad@2x.jpg */,
 				480FF1F118F516D400B0A937 /* EmailBtn.png */,
 				480FF1F218F516D400B0A937 /* SmsBtn.png */,
 				480FF1E918F50F2000B0A937 /* heart_minus.png */,
@@ -298,6 +313,7 @@
 		FC5F456518E3E19D0064BC9A /* Funfacts */ = {
 			isa = PBXGroup;
 			children = (
+				480B155218F7AEDD00974EEA /* Helper */,
 				480FF1ED18F513A700B0A937 /* GHContext */,
 				480FF1C818F50A2400B0A937 /* Images */,
 				48C2BC8118E92C54002973DE /* AdMob */,
@@ -306,7 +322,7 @@
 				FC5F457718E3E19D0064BC9A /* HomeViewController.h */,
 				FC5F457818E3E19D0064BC9A /* HomeViewController.m */,
 				FC5F459718E3E3080064BC9A /* HomeViewController.xib */,
-				FC5F459918E3E3400064BC9A /* HomeViewController_iPad.xib */,
+				FC5F459918E3E3400064BC9A /* HomeViewController~ipad.xib */,
 				FC5B75DF18EFC249008C372D /* FactsListViewController.h */,
 				FC5B75E018EFC249008C372D /* FactsListViewController.m */,
 				FC5B75E118EFC249008C372D /* FactsListViewController.xib */,
@@ -314,7 +330,7 @@
 				FC5F45B018E3FC230064BC9A /* AboutViewController.h */,
 				FC5F45B118E3FC230064BC9A /* AboutViewController.m */,
 				FC5F45B218E3FC230064BC9A /* AboutViewController.xib */,
-				FC5F45B518E3FC4F0064BC9A /* AboutViewController_iPad.xib */,
+				FC5F45B518E3FC4F0064BC9A /* AboutViewController~ipad.xib */,
 				FC5F459B18E3EED80064BC9A /* JokesViewController.h */,
 				FC5F459C18E3EED80064BC9A /* JokesViewController.m */,
 				FC5F45AA18E3F0140064BC9A /* JokesViewController.xib */,
@@ -450,6 +466,7 @@
 				480FF1E518F50A5200B0A937 /* QWERTYUIOP.png in Resources */,
 				FC5F45AD18E3F2160064BC9A /* FactsViewController.xib in Resources */,
 				FCAFBB2F18EDCE62008EBB22 /* home.jpg in Resources */,
+				480B155118F7AD1200974EEA /* home_iPad@2x.jpg in Resources */,
 				480FF1EB18F50F2000B0A937 /* heart_minus.png in Resources */,
 				480FF1F418F516D400B0A937 /* SmsBtn.png in Resources */,
 				FC5F45A418E3EF050064BC9A /* FactsViewController_iPad.xib in Resources */,
@@ -462,7 +479,8 @@
 				FC5F459818E3E3080064BC9A /* HomeViewController.xib in Resources */,
 				FC5B75E518EFC564008C372D /* factsviewcell.xib in Resources */,
 				480FF1E418F50A5200B0A937 /* prev.png in Resources */,
-				FC5F45B618E3FC4F0064BC9A /* AboutViewController_iPad.xib in Resources */,
+				FC5F45B618E3FC4F0064BC9A /* AboutViewController~ipad.xib in Resources */,
+				480B155018F7AD1200974EEA /* home_iPad.jpg in Resources */,
 				FC5F45AF18E3F2F10064BC9A /* FavouriteViewController.xib in Resources */,
 				FC5F45AB18E3F0140064BC9A /* JokesViewController.xib in Resources */,
 				FC5F45A918E3EF530064BC9A /* FavouriteViewController_iPad.xib in Resources */,
@@ -481,7 +499,7 @@
 				480FF1E318F50A5200B0A937 /* next.png in Resources */,
 				FC51758818F59D5400136698 /* favorites.plist in Resources */,
 				48C2BCB818E93221002973DE /* README.txt in Resources */,
-				FC5F459A18E3E3400064BC9A /* HomeViewController_iPad.xib in Resources */,
+				FC5F459A18E3E3400064BC9A /* HomeViewController~ipad.xib in Resources */,
 				FCF6000E18ED9E6900F8D970 /* funfacts.xml in Resources */,
 				480FF1D818F50A5200B0A937 /* about_4_reference.jpg in Resources */,
 			);
@@ -635,6 +653,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Funfacts/Funfacts-Prefix.pch";
 				INFOPLIST_FILE = "Funfacts/Funfacts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Funfacts/AdMob",
@@ -653,6 +672,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Funfacts/Funfacts-Prefix.pch";
 				INFOPLIST_FILE = "Funfacts/Funfacts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Funfacts/AdMob",
