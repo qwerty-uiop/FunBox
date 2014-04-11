@@ -22,7 +22,9 @@ NSInteger p=0,fc=0;
 @implementation FavouriteViewController
 @synthesize fav_view;
 HomeViewController * home_view;
-
+NSArray *fav_index_array;
+NSMutableArray *fav_index_message_array;
+int current_index;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -94,108 +96,166 @@ HomeViewController * home_view;
     
     UILongPressGestureRecognizer* _longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:overlay action:@selector(longPressDetected:)];
     [fav_view setUserInteractionEnabled:YES];
-    [self.view addGestureRecognizer:_longPressRecognizer];
+    [fav_view addGestureRecognizer:_longPressRecognizer];
 
     
+    current_index=0;
+    
+    
+//    // Do any additional setup after loading the view from its nib.
+//    fav_temparray1=[[NSMutableArray alloc] initWithCapacity:3];
+//    fav_temparray2=[[NSMutableArray alloc] initWithCapacity:3];
+//    fav_array=[NSArray alloc] ;
+//    [fav_temparray1 addObjectsFromArray:fps];
+//    
+//    fc=p=0;
+//    
+//    [self parsefunct];
+//    if(fav_array.count==0)
+//    {
+//        
+//    }
+//    else{
+//        while (fc<fav_array.count)
+//        {
+//            for(id factitem in fav_temparray1)
+//            {
+//                NSString *favfac=[fav_array objectAtIndex:fc];
+//                
+//                //  NSLog(@"foavfare: %@",favfac) ;
+//                if ([[[fav_temparray1 objectAtIndex:p]objectAtIndex:0]isEqualToString:favfac])
+//                    
+//                {
+//                    [fav_temparray2 addObject:[fav_temparray1 objectAtIndex:p]] ;
+//                    
+//                    p++;
+//                    break;
+//                } p++;
+//            }fc++;p=0;
+//        }
+////        fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
+//        fav_view.text=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
+//        fav_txt= [[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
+//        p++;
+//    }
+//    ip=NO;
     
     
     
-    // Do any additional setup after loading the view from its nib.
-    fav_temparray1=[[NSMutableArray alloc] initWithCapacity:3];
-    fav_temparray2=[[NSMutableArray alloc] initWithCapacity:3];
-    fav_array=[NSArray alloc] ;
-    [fav_temparray1 addObjectsFromArray:fps];
     
-    fc=p=0;
     
-    [self parsefunct];
-    if(fav_array.count==0)
-    {
-        
-    }
-    else{
-        while (fc<fav_array.count)
-        {
-            for(id factitem in fav_temparray1)
-            {
-                NSString *favfac=[fav_array objectAtIndex:fc];
-                
-                //  NSLog(@"foavfare: %@",favfac) ;
-                if ([[[fav_temparray1 objectAtIndex:p]objectAtIndex:0]isEqualToString:favfac])
-                    
-                {
-                    [fav_temparray2 addObject:[fav_temparray1 objectAtIndex:p]] ;
-                    
-                    p++;
-                    break;
-                } p++;
-            }fc++;p=0;
-        }
-//        fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
-        fav_view.text=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
-        fav_txt= [[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
-        p++;
-    }
-    ip=NO;
     
-    fav_view.textColor=[UIColor whiteColor];
-    fav_view.TextAlignment=NSTextAlignmentCenter;
-    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
+    
+    
+//    NSError *error;
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"favorites.plist"];
+//    
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    
+//    if (![fileManager fileExistsAtPath: path])
+//    {
+//        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"favorites" ofType:@"plist"];
+//        
+//        [fileManager copyItemAtPath:bundle toPath: path error:&error];
+//    }
+//    
+//    NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
+//    NSArray *fav_array=[fdata objectForKey:@"fact_id"];
+//    
+//    _countLabel.text=[NSString stringWithFormat:@"0/%d",[fav_array count]];
+    
+    
+//    fav_view.textColor=[UIColor whiteColor];
+//    fav_view.TextAlignment=NSTextAlignmentCenter;
+//    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [fav_temparray2 removeAllObjects];
-    NSInteger pt=0,ps=0;
-    
+//    [fav_temparray2 removeAllObjects];
+//    NSInteger pt=0,ps=0;
+    [self RefreshView];
+  
+}
+-(void)RefreshView
+{
     [self parsefunct];
+    [self getFavValuesInDict];
     
-    if(fav_array.count==0)
+    if(current_index>=[fav_index_message_array count])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-                              
-                                                        message:@"There are no favorite items"
-                              
-                                                       delegate:self
-                              
-                                              cancelButtonTitle:@"OK"
-                              
-                                              otherButtonTitles:nil];
+        current_index=0;
+    }
+    if([fav_index_message_array count]<=0)
+    {
+//        current_index=-1;
+        _countLabel.hidden=YES;
+    }
+    else
+    {
+        _countLabel.hidden=NO;
+    }
+
+    
+    if(fav_index_message_array.count==0)
+    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+//                              
+//                                                        message:@"There are no favorite items"
+//                              
+//                                                       delegate:self
+//                              
+//                                              cancelButtonTitle:@"OK"
+//                              
+//                                              otherButtonTitles:nil];
+//        
+//        [alert show];
         
-        [alert show];
-        
-             fav_view.text=@"Add facts to favorites";
+        fav_view.text=@"Add facts to favorites";
     }
     else{
-        while (pt<fav_array.count)
-        {
-            for(id factitem in fav_temparray1)
-            {
-                NSString *favfac=[fav_array objectAtIndex:pt];
-                
-                //  NSLog(@"foavfare: %@",favfac) ;
-                if ([[[fav_temparray1 objectAtIndex:ps]objectAtIndex:0]isEqualToString:favfac])
-                    
-                {
-                    [fav_temparray2 addObject:[fav_temparray1 objectAtIndex:ps]] ;
-                    
-                    ps++;
-                    break;
-                } ps++;
-            }pt++;ps=0;
-        }
-        if(fav_array.count==1){
-            
-            fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
-            fav_view.text=[[fav_temparray2 objectAtIndex:0]objectAtIndex:1];
-            fav_txt= [[fav_temparray2 objectAtIndex:0]objectAtIndex:1];
-        }
+        
+        fav_view.text=[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:1];
+        //            fav_txt= [[fav_temparray2 objectAtIndex:0]objectAtIndex:1];
+        
         
     }
     
+    _countLabel.text=[NSString stringWithFormat:@"%d/%d",current_index+1,[fav_index_message_array count]];
     fav_view.textColor=[UIColor whiteColor];
     fav_view.TextAlignment=NSTextAlignmentCenter;
     fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
+}
+-(void)getFavValuesInDict
+{
+    fav_index_message_array=[[NSMutableArray alloc]init];
+    
+    NSArray* tagValuesArray=[[NSArray alloc]initWithObjects:@"jokes",@"facts",@"twisters", nil];
+    for(int i=0;i<3;i++)
+    {
+        NSDictionary* tmp1=[[master_data objectForKey:@"head"] objectForKey:[tagValuesArray objectAtIndex:i]];
+//
+//        NSDictionary* tmp2=[tmp1 objectForKey:@"record"];
+        for(int j=0;j<[[tmp1 objectForKey:@"record"] count];j++)
+        {
+             NSLog(@"Value %@",[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"index"]valueForKey:@"text"]);
+            
+            if([fav_index_array containsObject:[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"index"]valueForKey:@"text"]])
+            {
+                NSArray* tArray=[[NSArray alloc]initWithObjects:[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"index"]valueForKey:@"text"],[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"message"]valueForKey:@"text"], nil];
+                [fav_index_message_array addObject:tArray];
+            }
+        }
+    }
+    
+    
+    
+//    NSLog(@"Value %@",[[master_data objectForKey:@"head"] objectAtIndex:1]);
+//    NSDictionary* temp1=[[master_data objectForKey:@"head"]objectForKey:@"facts"];
+////    NSDictionary* temp2=[temp1 objectForKey:@"facts"];
+//    NSLog(@"Value %@",temp1);
 }
 -(void)parsefunct{
     
@@ -214,7 +274,10 @@ HomeViewController * home_view;
     }
     
     NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    fav_array=[fdata objectForKey:@"fact_id"];
+    fav_index_array=[fdata objectForKey:@"fact_id"];
+    
+    
+    
     
 }
 
@@ -232,100 +295,148 @@ HomeViewController * home_view;
 }
 
 - (IBAction)prv_fact:(id)sender {
-    if(ip==YES)
-    {
-        p--;
-    }
-    ip=NO;
-    if(fav_temparray2.count==1){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                        message:@"Only one favorite item"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
-         }
+//    if(ip==YES)
+//    {
+//        p--;
+//    }
+//    ip=NO;
+//    if(fav_temparray2.count==1){
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+//                                                        message:@"Only one favorite item"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles:nil];
+//        
+//        [alert show];
+//         }
+//    
+//    else
+//    {
+//        
+//        if(bol)
+//        {
+//            p=p-2;
+//            bol=NO;
+//        }
+//        for(id factitem in fav_temparray2)
+//        {if(p>=0){
+//            fav_txt=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1] ;
+//            // NSString *rlabel=[[shuffle objectAtIndex:s]objectAtIndex:2] ;
+//            [UIView beginAnimations: @ "animationID" context: nil];
+//            [UIView setAnimationDuration: 0.7f];
+//            [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+//            [UIView setAnimationRepeatAutoreverses: NO];
+////            [UIView setAnimationTransition: UIViewAnimationTransitionCurlDown forView: self.fav_view cache: YES];
+//            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.displayView cache: YES];
+//            [UIView commitAnimations  ];
+//            fav_view.text=fav_txt;
+//            //   ranlabel.text=rlabel;
+//            p--;
+//            break;
+//        }
+//        else{
+//            p=fav_temparray2.count-1;
+//        }} }
+//    fav_view.textColor=[UIColor whiteColor];
+//    fav_view.TextAlignment=NSTextAlignmentCenter;
+//    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
     
-    else
+    if([fav_index_message_array count]>0)
     {
-        
-        if(bol)
+        current_index--;
+        if(current_index<0)
         {
-            p=p-2;
-            bol=NO;
+            current_index=[fav_index_message_array count]-1;
         }
-        for(id factitem in fav_temparray2)
-        {if(p>=0){
-            fav_txt=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1] ;
-            // NSString *rlabel=[[shuffle objectAtIndex:s]objectAtIndex:2] ;
-            [UIView beginAnimations: @ "animationID" context: nil];
-            [UIView setAnimationDuration: 0.7f];
-            [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-            [UIView setAnimationRepeatAutoreverses: NO];
-//            [UIView setAnimationTransition: UIViewAnimationTransitionCurlDown forView: self.fav_view cache: YES];
-            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.displayView cache: YES];
-            [UIView commitAnimations  ];
-            fav_view.text=fav_txt;
-            //   ranlabel.text=rlabel;
-            p--;
-            break;
-        }
-        else{
-            p=fav_temparray2.count-1;
-        }} }
+        
+        [UIView beginAnimations: @ "animationID" context: nil];
+        [UIView setAnimationDuration: 0.7f];
+        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationRepeatAutoreverses: NO];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.displayView cache: YES];
+        [UIView commitAnimations  ];
+
+        
+        
+        _countLabel.text=[NSString stringWithFormat:@"%d/%d",current_index+1,[fav_index_message_array count]];
+        fav_view.text=[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:1];
+    }
+    
+    
+    
     fav_view.textColor=[UIColor whiteColor];
     fav_view.TextAlignment=NSTextAlignmentCenter;
     fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 }
 
 - (IBAction)next_fact:(id)sender {
-    if(ip==YES)
-    {
-        p++;
-    }
-    ip=NO;
-    if(fav_temparray2.count==1){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                        message:@"Only one favorite item"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
-            }
+//    if(ip==YES)
+//    {
+//        p++;
+//    }
+//    ip=NO;
+//    if(fav_temparray2.count==1){
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+//                                                        message:@"Only one favorite item"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles:nil];
+//        
+//        [alert show];
+//            }
+//    
+//    else
+//    {
+//        
+//        if(!bol)
+//        {
+//            p=p+2;
+//            bol=YES;
+//        }
+//        
+//        for(id factitem in fav_temparray2)
+//        {if(p<fav_temparray2.count)
+//        {
+//            fav_txt=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1] ;
+//            [UIView beginAnimations: @ "animationID" context: nil];
+//            [UIView setAnimationDuration: 0.7f];
+//            [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+//            [UIView setAnimationRepeatAutoreverses: NO];
+////            [UIView setAnimationTransition: UIViewAnimationTransitionCurlUp forView: self.fav_view cache: YES];
+//            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.displayView cache: YES];
+//            [UIView commitAnimations  ];
+//            
+//            fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
+//            fav_view.text=fav_txt;
+//            // ranlabel.text=rlabel;
+//            p++;
+//            break;
+//        }
+//        else{
+//            p=0;
+//        }
+//        }    }
     
-    else
+    
+    if([fav_index_message_array count]>0)
     {
-        
-        if(!bol)
+        current_index++;
+        if(current_index>=[fav_index_message_array count])
         {
-            p=p+2;
-            bol=YES;
+            current_index=0;
         }
-        
-        for(id factitem in fav_temparray2)
-        {if(p<fav_temparray2.count)
-        {
-            fav_txt=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1] ;
-            [UIView beginAnimations: @ "animationID" context: nil];
-            [UIView setAnimationDuration: 0.7f];
-            [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-            [UIView setAnimationRepeatAutoreverses: NO];
-//            [UIView setAnimationTransition: UIViewAnimationTransitionCurlUp forView: self.fav_view cache: YES];
-            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.displayView cache: YES];
-            [UIView commitAnimations  ];
-            
-            fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
-            fav_view.text=fav_txt;
-            // ranlabel.text=rlabel;
-            p++;
-            break;
-        }
-        else{
-            p=0;
-        }
-        }    }
+        [UIView beginAnimations: @ "animationID" context: nil];
+        [UIView setAnimationDuration: 0.7f];
+        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationRepeatAutoreverses: NO];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.displayView cache: YES];
+        [UIView commitAnimations  ];
+        _countLabel.text=[NSString stringWithFormat:@"%d/%d",current_index+1,[fav_index_message_array count]];
+        fav_view.text=[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:1];
+    }
+    
+    
+    
     fav_view.textColor=[UIColor whiteColor];
     fav_view.TextAlignment=NSTextAlignmentCenter;
     fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
@@ -349,39 +460,76 @@ HomeViewController * home_view;
     }
     
     NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    //   NSArray *fav_array=[fdata objectForKey:@"f_id"];
-    if(ip==NO){
-        if(bol==YES){
-            p--;
-            if(p<0){
-                p=fav_temparray2.count-1;
-                
-            }
-        }
-        else{
-            p++;
-            if(p>=fav_temparray2.count){
-                p=0;
-            }
-        }
-    }
-    if(fav_temparray2.count==0)
+//    //   NSArray *fav_array=[fdata objectForKey:@"f_id"];
+//    if(ip==NO){
+//        if(bol==YES){
+//            p--;
+//            if(p<0){
+//                p=fav_temparray2.count-1;
+//                
+//            }
+//        }
+//        else{
+//            p++;
+//            if(p>=fav_temparray2.count){
+//                p=0;
+//            }
+//        }
+//    }
+//    if(fav_temparray2.count==0)
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+//                                                        message:@"No more favorites !"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"OK"otherButtonTitles:nil];
+//        
+//        [alert show];
+//      
+//        fav_view.text=@"Add favorite facts";
+//    }
+//    else{
+//        // NSLog(@"Before: %@",[[test5 objectAtIndex:p]objectAtIndex:1]) ;
+//        [[fdata valueForKey:@"f_id"]  removeObject:[[fav_temparray2 objectAtIndex:p]objectAtIndex:0]];
+//        
+//        [fdata writeToFile:path atomically:YES];
+//        [fav_temparray2 removeObject:[fav_temparray2 objectAtIndex:p]] ;
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+//                                                        message:@"Removed from favorites"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles:nil];
+//        
+//        [alert show];
+//        if(fav_temparray2.count==0){
+//            
+//            fav_view.text=@"Add favorite facts";
+//        }
+//        else{
+//            if(p>=fav_temparray2.count)
+//            {
+//                p=0;
+//            }
+//            fav_view.text=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
+//            
+//            //   ffff=[[test5 objectAtIndex:p]objectAtIndex:1];
+//            
+//        }
+//        
+//    }
+//    ip=YES;
+//
+    
+    
+    
+    if([fav_index_message_array count]>0)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                        message:@"No more favorites !"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"otherButtonTitles:nil];
         
-        [alert show];
-      
-        fav_view.text=@"Add favorite facts";
-    }
-    else{
-        // NSLog(@"Before: %@",[[test5 objectAtIndex:p]objectAtIndex:1]) ;
-        [[fdata valueForKey:@"f_id"]  removeObject:[[fav_temparray2 objectAtIndex:p]objectAtIndex:0]];
+        NSLog(@"Value %@",[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:0]);
+    NSLog(@"Value %@",fdata);
+        [[fdata valueForKey:@"fact_id"]  removeObject:[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:0]];
         
         [fdata writeToFile:path atomically:YES];
-        [fav_temparray2 removeObject:[fav_temparray2 objectAtIndex:p]] ;
+//        [fav_temparray2 removeObject:[fav_temparray2 objectAtIndex:p]] ;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
                                                         message:@"Removed from favorites"
                                                        delegate:self
@@ -389,23 +537,11 @@ HomeViewController * home_view;
                                               otherButtonTitles:nil];
         
         [alert show];
-        if(fav_temparray2.count==0){
-            
-            fav_view.text=@"Add favorite facts";
-        }
-        else{
-            if(p>=fav_temparray2.count)
-            {
-                p=0;
-            }
-            fav_view.text=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
-            
-            //   ffff=[[test5 objectAtIndex:p]objectAtIndex:1];
-            
-        }
         
+        [self RefreshView];
+
     }
-    ip=YES;
+    
     
     fav_view.textColor=[UIColor whiteColor];
     fav_view.TextAlignment=NSTextAlignmentCenter;

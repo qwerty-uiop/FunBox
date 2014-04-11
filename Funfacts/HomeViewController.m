@@ -13,6 +13,7 @@
 #import "FavouriteViewController.h"
 #import "FactClass.h"
 #import "FactsListViewController.h"
+#import "XMLReader.h"
 
 @interface HomeViewController ()
 
@@ -40,8 +41,8 @@ FactsListViewController * factsListView;
     
    _version.text = displayVersionNumber;
     
-    NSLog(@"Value %f",CGRectGetMaxX(self.view.frame));
-    NSLog(@"Value %f",CGRectGetMaxY(self.view.frame));
+//    NSLog(@"Value %f",CGRectGetMaxX(self.view.frame));
+//    NSLog(@"Value %f",CGRectGetMaxY(self.view.frame));
     
     [self InitializeBannerView];
     fun_facts= [[NSMutableArray alloc] initWithCapacity:3 ];
@@ -58,6 +59,13 @@ FactsListViewController * factsListView;
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)twisters_clkd:(id)sender {
+    g_category=k_n_twisters;
+    FactsViewController* facts_displayView =[[FactsViewController alloc] initWithNibName:@"FactsViewController" bundle:nil ];
+    
+    [self presentViewController: facts_displayView animated: NO completion:nil];
+}
+
 - (IBAction)about_clkd:(id)sender {
     about_view =[[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil ];
     
@@ -66,39 +74,48 @@ FactsListViewController * factsListView;
 
 -(void)parse_xml{
     
-    NSString *xmlPath = [[NSBundle mainBundle] pathForResource:@"funfacts" ofType:@"xml"];
+    NSString *xmlPath = [[NSBundle mainBundle] pathForResource:@"funboxmaster" ofType:@"xml"];
     NSData *data = [NSData dataWithContentsOfFile:xmlPath];
-    parser = [[NSXMLParser alloc] initWithData:data];
-    parser.delegate=self;
-    [parser setShouldResolveExternalEntities:YES];
+//    parser = [[NSXMLParser alloc] initWithData:data];
+//    parser.delegate=self;
+//    [parser setShouldResolveExternalEntities:YES];
+//    
+//    BOOL success =  [parser parse];
+//    if(success){
+//          NSLog(@"No Errors");
+//        fps=fun_facts;
+////        NSLog(@"Atghggg: %@",fps);
+//    }
+//    else{
+//          NSLog(@"Error Error Error!!!");
+//    }
+//
+//
+//   // funDict=[[NSMutableDictionary alloc]initWithDictionary:dict];
+////
+    NSError *parseError = nil;
+    master_data = [XMLReader dictionaryForXMLData:data error:&parseError];
     
-    BOOL success =  [parser parse];
-    if(success){
-          NSLog(@"No Errors");
-        fps=fun_facts;
-        // NSLog(@"Atghggg: %@",fps);
-    }
-    else{
-          NSLog(@"Error Error Error!!!");
-    }
-
-
-   // funDict=[[NSMutableDictionary alloc]initWithDictionary:dict];
+    NSDictionary* aaaa=[[NSDictionary alloc]initWithDictionary:master_data];
+    
+    
     
     
     
 }
 
 - (IBAction)jokes_clkd:(id)sender {
-    jokes_view =[[JokesViewController alloc] initWithNibName:@"JokesViewController" bundle:nil ];
+    g_category=k_n_jokes;
+    FactsViewController* facts_displayView =[[FactsViewController alloc] initWithNibName:@"FactsViewController" bundle:nil ];
     
-   [self presentViewController: jokes_view animated: NO completion:nil];
+    [self presentViewController: facts_displayView animated: NO completion:nil];
 }
 
 - (IBAction)funfacts_clkd:(id)sender {
-    factsListView =[[FactsListViewController alloc] initWithNibName:@"FactsListViewController" bundle:nil ];
+    g_category=k_n_facts;
+    FactsViewController* facts_displayView =[[FactsViewController alloc] initWithNibName:@"FactsViewController" bundle:nil ];
     
-    [self presentViewController: factsListView animated: NO completion:nil];
+    [self presentViewController: facts_displayView animated: NO completion:nil];
 }
 
 - (IBAction)favourites_clkd:(id)sender {
@@ -120,40 +137,46 @@ FactsListViewController * factsListView;
     request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [bannerView_ loadRequest:request];
 }
-#pragma mark - Parser Delegates
-
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
-  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
-    attributes:(NSDictionary *)attributeDict {
-    
-    if([elementName isEqualToString:@"Records"]){
-        
-    }
-    
-    else if([elementName isEqualToString:@"Row"]){
-        
-        facts=[[FactClass alloc]init];
-        facts.factid=[attributeDict objectForKey:@"A"];
-        facts.fact=[attributeDict objectForKey:@"B"];
-        facts.category=[attributeDict objectForKey:@"C"];
-        [ fun_facts addObject:[NSMutableArray arrayWithObjects:facts.factid ,facts.fact,facts.category,nil]] ;
-        // i++;
-    }
-}
-
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
-  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    if([elementName isEqualToString:@"Records"])
-        
-        return;
-    
-    if([elementName isEqualToString:@"Row"]){
-       // [books addObject:aBook];
-        facts=nil;
-    }
-    else
-        [facts setValue:currentElementValue forKey:elementName];
-    currentElementValue=nil;
-}
+//#pragma mark - Parser Delegates
+//
+//- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
+//  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
+//    attributes:(NSDictionary *)attributeDict {
+//    
+//    if([elementName isEqualToString:@"head"]){
+//        
+//    }
+//    
+//    else if([elementName isEqualToString:@"jokes"]){
+//        
+////        facts=[[FactClass alloc]init];
+////        facts.factid=[attributeDict objectForKey:@"A"];
+////        facts.factid=[attributeDict valueForKey:@"record"];
+////        facts.fact=[attributeDict objectForKey:@"B"];
+////        facts.category=[attributeDict objectForKey:@"C"];
+////        [ fun_facts addObject:[NSMutableArray arrayWithObjects:facts.factid ,facts.fact,facts.category,nil]] ;
+//        // i++;
+//        
+////        NSLog(@"didStartElement %@",);
+//        
+//        
+//        
+//    }
+//}
+//
+//- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
+//  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+////    if([elementName isEqualToString:@"Records"])
+////        
+////        return;
+////    
+////    if([elementName isEqualToString:@"Row"]){
+////       // [books addObject:aBook];
+////        facts=nil;
+////    }
+////    else
+////        [facts setValue:currentElementValue forKey:elementName];
+////    currentElementValue=nil;
+//}
 
 @end

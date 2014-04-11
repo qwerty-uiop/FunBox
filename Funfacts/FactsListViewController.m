@@ -8,6 +8,7 @@
 
 #import "FactsListViewController.h"
 #import "FactsViewController.h"
+#import "HomeViewController.h"
 @interface FactsListViewController ()
 
 @end
@@ -30,6 +31,8 @@
     NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:@"Letter Facts",
                              @"Funny Letters", @"twisters", @"History", @"Other",@"People", @"Places", @"Sports", @"Strange Laws",  @"Words", @"World Records",  nil];
     self.dataList = array;
+    
+//    NSLog(@"Value %@",master_data);
 }
 
 - (void)didReceiveMemoryWarning

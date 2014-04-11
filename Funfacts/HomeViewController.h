@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "GADBannerView.h"
 NSMutableArray *fps;
+NSDictionary *master_data;
+NSString* g_category;
 @class FactClass;
 @interface HomeViewController : UIViewController<NSXMLParserDelegate>{
 NSXMLParser *parser;
@@ -21,6 +23,7 @@ NSXMLParser *parser;
 @property(nonatomic,retain)NSXMLParser *parser;
 @property (nonatomic, retain) NSMutableArray *fun_facts;
 @property (strong, nonatomic) IBOutlet UILabel *version;
+- (IBAction)twisters_clkd:(id)sender;
 
 - (IBAction)about_clkd:(id)sender;
 - (IBAction)jokes_clkd:(id)sender;

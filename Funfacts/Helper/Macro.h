@@ -15,4 +15,9 @@
 #define k_DeviceWidth [UIScreen mainScreen].bounds.size.width
 #define k_DeviceHeight [UIScreen mainScreen].bounds.size.height
 
+
+#define k_n_facts @"facts"
+#define k_n_jokes @"jokes"
+#define k_n_twisters @"twisters"
+
 #endif

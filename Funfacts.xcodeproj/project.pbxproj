@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		480B155018F7AD1200974EEA /* home_iPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 480B154E18F7AD1200974EEA /* home_iPad.jpg */; };
 		480B155118F7AD1200974EEA /* home_iPad@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 480B154F18F7AD1200974EEA /* home_iPad@2x.jpg */; };
+		480B155618F7C32B00974EEA /* funboxmaster.xml in Resources */ = {isa = PBXBuildFile; fileRef = 480B155518F7C32B00974EEA /* funboxmaster.xml */; };
+		480B155F18F7CB4200974EEA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 480B155C18F7CB4200974EEA /* README.md */; };
+		480B156018F7CB4200974EEA /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 480B155E18F7CB4200974EEA /* XMLReader.m */; };
 		480FF1D818F50A5200B0A937 /* about_4_reference.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1C918F50A5200B0A937 /* about_4_reference.jpg */; };
 		480FF1D918F50A5200B0A937 /* AboutUs.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1CA18F50A5200B0A937 /* AboutUs.png */; };
 		480FF1DA18F50A5200B0A937 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1CB18F50A5200B0A937 /* Back.png */; };
@@ -90,6 +93,10 @@
 		480B154E18F7AD1200974EEA /* home_iPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = home_iPad.jpg; sourceTree = "<group>"; };
 		480B154F18F7AD1200974EEA /* home_iPad@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home_iPad@2x.jpg"; sourceTree = "<group>"; };
 		480B155318F7AEED00974EEA /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		480B155518F7C32B00974EEA /* funboxmaster.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = funboxmaster.xml; sourceTree = "<group>"; };
+		480B155C18F7CB4200974EEA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		480B155D18F7CB4200974EEA /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		480B155E18F7CB4200974EEA /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		480FF1C918F50A5200B0A937 /* about_4_reference.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = about_4_reference.jpg; sourceTree = "<group>"; };
 		480FF1CA18F50A5200B0A937 /* AboutUs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutUs.png; sourceTree = "<group>"; };
 		480FF1CB18F50A5200B0A937 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
@@ -134,7 +141,7 @@
 		FC5B75E018EFC249008C372D /* FactsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactsListViewController.m; sourceTree = "<group>"; };
 		FC5B75E118EFC249008C372D /* FactsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FactsListViewController.xib; sourceTree = "<group>"; };
 		FC5B75E418EFC564008C372D /* factsviewcell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = factsviewcell.xib; sourceTree = "<group>"; };
-		FC5B75E818EFD713008C372D /* button_comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_comment.png; sourceTree = "<group>"; };
+		FC5B75E818EFD713008C372D /* button_comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_comment.png; path = ../button_comment.png; sourceTree = "<group>"; };
 		FC5F455C18E3E19D0064BC9A /* Funfacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funfacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5F455F18E3E19D0064BC9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FC5F456118E3E19D0064BC9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -175,7 +182,7 @@
 		FCAFBB3018EDD124008EBB22 /* about.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = about.jpg; sourceTree = "<group>"; };
 		FCF6000A18ED996C00F8D970 /* FactClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactClass.h; sourceTree = "<group>"; };
 		FCF6000B18ED996C00F8D970 /* FactClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactClass.m; sourceTree = "<group>"; };
-		FCF6000D18ED9E6900F8D970 /* funfacts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = funfacts.xml; sourceTree = "<group>"; };
+		FCF6000D18ED9E6900F8D970 /* funfacts.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = funfacts.xml; path = ../funfacts.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,14 +220,35 @@
 		480B155218F7AEDD00974EEA /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				480B155B18F7CB4100974EEA /* XMLReader */,
 				480B155318F7AEED00974EEA /* Macro.h */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		480B155418F7C30700974EEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FCF6000D18ED9E6900F8D970 /* funfacts.xml */,
+				480B155518F7C32B00974EEA /* funboxmaster.xml */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		480B155B18F7CB4100974EEA /* XMLReader */ = {
+			isa = PBXGroup;
+			children = (
+				480B155C18F7CB4200974EEA /* README.md */,
+				480B155D18F7CB4200974EEA /* XMLReader.h */,
+				480B155E18F7CB4200974EEA /* XMLReader.m */,
+			);
+			path = XMLReader;
+			sourceTree = "<group>";
+		};
 		480FF1C818F50A2400B0A937 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FC5B75E818EFD713008C372D /* button_comment.png */,
 				480B154E18F7AD1200974EEA /* home_iPad.jpg */,
 				480B154F18F7AD1200974EEA /* home_iPad@2x.jpg */,
 				480FF1F118F516D400B0A937 /* EmailBtn.png */,
@@ -313,6 +341,7 @@
 		FC5F456518E3E19D0064BC9A /* Funfacts */ = {
 			isa = PBXGroup;
 			children = (
+				480B155418F7C30700974EEA /* Resources */,
 				480B155218F7AEDD00974EEA /* Helper */,
 				480FF1ED18F513A700B0A937 /* GHContext */,
 				480FF1C818F50A2400B0A937 /* Images */,
@@ -358,8 +387,6 @@
 				FCAFBB2E18EDCE62008EBB22 /* home.jpg */,
 				FCAFBB3018EDD124008EBB22 /* about.jpg */,
 				FC5F456718E3E19D0064BC9A /* Funfacts-Info.plist */,
-				FC5B75E818EFD713008C372D /* button_comment.png */,
-				FCF6000D18ED9E6900F8D970 /* funfacts.xml */,
 				FC5F456818E3E19D0064BC9A /* InfoPlist.strings */,
 				FC5F456B18E3E19D0064BC9A /* main.m */,
 				FC5F456D18E3E19D0064BC9A /* Funfacts-Prefix.pch */,
@@ -482,7 +509,9 @@
 				FC5F45B618E3FC4F0064BC9A /* AboutViewController~ipad.xib in Resources */,
 				480B155018F7AD1200974EEA /* home_iPad.jpg in Resources */,
 				FC5F45AF18E3F2F10064BC9A /* FavouriteViewController.xib in Resources */,
+				480B155618F7C32B00974EEA /* funboxmaster.xml in Resources */,
 				FC5F45AB18E3F0140064BC9A /* JokesViewController.xib in Resources */,
+				480B155F18F7CB4200974EEA /* README.md in Resources */,
 				FC5F45A918E3EF530064BC9A /* FavouriteViewController~ipad.xib in Resources */,
 				FC5F456A18E3E19D0064BC9A /* InfoPlist.strings in Resources */,
 				480FF1E018F50A5200B0A937 /* land_graphic_bg_white.png in Resources */,
@@ -526,6 +555,7 @@
 				FC5F457918E3E19D0064BC9A /* HomeViewController.m in Sources */,
 				480FF1F018F513B900B0A937 /* GHContextMenuView.m in Sources */,
 				FC5B75E218EFC249008C372D /* FactsListViewController.m in Sources */,
+				480B156018F7CB4200974EEA /* XMLReader.m in Sources */,
 				FC5F45B318E3FC230064BC9A /* AboutViewController.m in Sources */,
 				FC5F457018E3E19D0064BC9A /* AppDelegate.m in Sources */,
 				FC5F456C18E3E19D0064BC9A /* main.m in Sources */,

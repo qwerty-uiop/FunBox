@@ -11,9 +11,9 @@
 #define GHShowAnimationID @"GHContextMenuViewRriseAnimationID"
 #define GHDismissAnimationID @"GHContextMenuViewDismissAnimationID"
 
-NSInteger const GHMainItemSize = 44;
-NSInteger const GHMenuItemSize = 40;
-NSInteger const GHBorderWidth  = 5;
+//NSInteger const GHMainItemSize = 44;
+//NSInteger const GHMenuItemSize = 40;
+//NSInteger const GHBorderWidth  = 5;
 
 CGFloat const   GHAnimationDuration = 0.2;
 CGFloat const   GHAnimationDelay = GHAnimationDuration/5;
@@ -59,11 +59,20 @@ CGFloat const   GHAnimationDelay = GHAnimationDuration/5;
 
 @implementation GHContextMenuView
 
+NSInteger GHMainItemSize;
+NSInteger GHMenuItemSize;
+NSInteger GHBorderWidth; ;
 - (id)init
 {
     self = [super initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     if (self) {
         // Initialization code
+        
+        GHMainItemSize = k_DeviceTypeIsIpad?120:44;
+        GHMenuItemSize=k_DeviceTypeIsIpad?120:40;
+        GHBorderWidth=k_DeviceTypeIsIpad?10:5;
+        
+        
         self.userInteractionEnabled = YES;
 //        _longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressDetected:)];
 //        [self addGestureRecognizer:_longPressRecognizer];
@@ -80,8 +89,7 @@ CGFloat const   GHAnimationDelay = GHAnimationDuration/5;
         _menuItems = [NSMutableArray array];
         _itemLocations = [NSMutableArray array];
         _arcAngle = M_PI_2;
-        _radius = 90;
-        
+        _radius = k_DeviceTypeIsIpad?300:90;
         self.itemBGColor = [UIColor grayColor].CGColor;
         self.itemBGHighlightedColor = [UIColor redColor].CGColor;
         

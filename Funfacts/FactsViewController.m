@@ -22,6 +22,8 @@ NSString *temp_txt;
 HomeViewController * home_view;
 NSInteger count,j=0,k=0,n=0,m=1;
 NSMutableArray *temp_factArray;
+NSDictionary *temp_dict;
+int currentIndex,totCount;
 bool c=YES;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -93,7 +95,7 @@ bool c=YES;
     
     UILongPressGestureRecognizer* _longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:overlay action:@selector(longPressDetected:)];
     [self.fact_text setUserInteractionEnabled:YES];
-    [self.view addGestureRecognizer:_longPressRecognizer];
+    [fact_text addGestureRecognizer:_longPressRecognizer];
 
     
     
@@ -120,7 +122,9 @@ bool c=YES;
         n++;
     }
     
-    //NSLog(@"At: %d",k);
+//    NSLog(@"Value %@",fps);
+//    temp_factArray=[[NSMutableArray al]initWithArray:];
+//    //NSLog(@"At: %d",k);
     
     for(id factitem in temp_factArray)
     {
@@ -142,13 +146,31 @@ bool c=YES;
 
     
     
+    
+    currentIndex=0;
+    temp_dict=[[NSDictionary alloc]initWithDictionary:[[master_data objectForKey:@"head"] objectForKey:g_category] ];
+    
+    totCount=[[temp_dict objectForKey:@"record" ]count];
+    fact_countLbl.text=[NSString stringWithFormat:@"1/%d",totCount];
+    NSLog(@"Value %@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:0]objectForKey:@"message"]valueForKey:@"text"]);
+    fact_text.text=[self getMessageAtIndex:currentIndex];
+    
     fact_text.textColor=[UIColor whiteColor];
     fact_text.TextAlignment=NSTextAlignmentCenter;
     fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 
 
 }
-
+-(NSString*)getMessageAtIndex:(int)index
+{
+    NSString* message=[NSString stringWithFormat:@"%@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:index]objectForKey:@"message"]valueForKey:@"text"]];
+    return message;
+}
+-(NSString*)getMessageIndexAtIndex:(int)index
+{
+    NSString* message=[NSString stringWithFormat:@"%@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:index]objectForKey:@"index"]valueForKey:@"text"]];
+    return message;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -161,115 +183,156 @@ bool c=YES;
     [self presentViewController: home_view animated: NO completion:nil];
 }
 - (IBAction)prvfact:(id)sender{
-    if(c)
-    {
-        j=j-2;
-        c=NO;
-        m=m-2;
-    }
-    if(j<0)
-    {
-        j=temp_factArray.count;
-        j--;
-    }
+//    if(c)
+//    {
+//        j=j-2;
+//        c=NO;
+//        m=m-2;
+//    }
+//    if(j<0)
+//    {
+//        j=temp_factArray.count;
+//        j--;
+//    }
+//    
+//    for(id factitem in temp_factArray)
+//    {
+//        
+//        if ([[[temp_factArray objectAtIndex:j]objectAtIndex:2]isEqualToString: category_name])
+//        {
+//            //  NSLog(@"Arrayprev: %d",j);
+//            temp_txt=[[temp_factArray objectAtIndex:j]objectAtIndex:1] ;
+//            j--;
+//            
+//            if(m<=0)
+//            {
+//                m=k;
+//            }
+//            NSString *factcount = [NSString stringWithFormat:@"%d",m];
+//            factcount = [factcount stringByAppendingString:[NSString stringWithFormat:@"/%d ", k]];
+//        [UIView beginAnimations: @ "animationID" context: nil];
+//        [UIView setAnimationDuration: 0.7f];
+//        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+//        [UIView setAnimationRepeatAutoreverses: NO];
+//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.joke_displyView cache: YES];
+//        [UIView commitAnimations  ];
+//            fact_text.text=[NSString stringWithFormat:@"%@", temp_txt];
+//
+//            fact_countLbl.text=factcount;
+//            m--;
+//            break;
+//        }
+//        
+//        j--;
+//        
+//        if(j<0)
+//        {
+//            j=temp_factArray.count;
+//            j--;
+//        }
+//
+//    }
     
-    for(id factitem in temp_factArray)
+    
+    
+    
+    
+    
+    currentIndex--;
+    if(currentIndex<0)
     {
-        
-        if ([[[temp_factArray objectAtIndex:j]objectAtIndex:2]isEqualToString: category_name])
-        {
-            //  NSLog(@"Arrayprev: %d",j);
-            temp_txt=[[temp_factArray objectAtIndex:j]objectAtIndex:1] ;
-            j--;
-            
-            if(m<=0)
-            {
-                m=k;
-            }
-            NSString *factcount = [NSString stringWithFormat:@"%d",m];
-            factcount = [factcount stringByAppendingString:[NSString stringWithFormat:@"/%d ", k]];
-        [UIView beginAnimations: @ "animationID" context: nil];
-        [UIView setAnimationDuration: 0.7f];
-        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationRepeatAutoreverses: NO];
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.joke_displyView cache: YES];
-        [UIView commitAnimations  ];
-            fact_text.text=[NSString stringWithFormat:@"%@", temp_txt];
-
-            fact_countLbl.text=factcount;
-            m--;
-            break;
-        }
-        
-        j--;
-        
-        if(j<0)
-        {
-            j=temp_factArray.count;
-            j--;
-        }
-
+        currentIndex=totCount-1;
     }
+    [UIView beginAnimations: @ "animationID" context: nil];
+    [UIView setAnimationDuration: 0.7f];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationRepeatAutoreverses: NO];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.joke_displyView cache: YES];
+    [UIView commitAnimations  ];
+    
+    
+    fact_countLbl.text=[NSString stringWithFormat:@"%d/%d",currentIndex+1,totCount];
+    fact_text.text=[self getMessageAtIndex:currentIndex];
+    
+
     fact_text.textColor=[UIColor whiteColor];
     fact_text.TextAlignment=NSTextAlignmentCenter;
     fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 }
 
 - (IBAction)nextfact:(id)sender{
-    if(!c)
-    {
-        j=j+2;
-        c=YES;
-        m= m+2;
-    }
+//    if(!c)
+//    {
+//        j=j+2;
+//        c=YES;
+//        m= m+2;
+//    }
+//    
+//    if(j>=temp_factArray.count)
+//    {
+//        j=0;  }
+//    
+//    for(id factitem in temp_factArray)
+//    {
+//        
+//        if ([[[temp_factArray objectAtIndex:j]objectAtIndex:2]isEqualToString: category_name])
+//        {
+//            
+//            if(m>k)
+//            {
+//                m=1;
+//            }
+//            // NSLog(@"Araaynext: %d",j);
+//            temp_txt=[[temp_factArray objectAtIndex:j]objectAtIndex:1] ;
+//            
+//            NSString *factcount = [NSString stringWithFormat:@"%d",m];
+//            factcount = [factcount stringByAppendingString:[NSString stringWithFormat:@"/%d ", k]];
+//            
+//            j++;
+//        
+//        
+//        [UIView beginAnimations: @ "animationID" context: nil];
+//        [UIView setAnimationDuration: 0.7f];
+//        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+//        [UIView setAnimationRepeatAutoreverses: NO];
+//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.joke_displyView cache: YES];
+//        [UIView commitAnimations  ];
+//            
+//          
+//           // fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
+//             fact_countLbl.text=factcount;
+//            fact_text.text=temp_txt;
+//            m++;
+//            
+//            break;
+//        }
+//        
+//        j++;
+//        
+//        if(j>=temp_factArray.count)
+//        {
+//            j=0;
+//            
+//        }
+//    }
     
-    if(j>=temp_factArray.count)
-    {
-        j=0;  }
     
-    for(id factitem in temp_factArray)
+    currentIndex++;
+    if(currentIndex==totCount)
     {
-        
-        if ([[[temp_factArray objectAtIndex:j]objectAtIndex:2]isEqualToString: category_name])
-        {
-            
-            if(m>k)
-            {
-                m=1;
-            }
-            // NSLog(@"Araaynext: %d",j);
-            temp_txt=[[temp_factArray objectAtIndex:j]objectAtIndex:1] ;
-            
-            NSString *factcount = [NSString stringWithFormat:@"%d",m];
-            factcount = [factcount stringByAppendingString:[NSString stringWithFormat:@"/%d ", k]];
-            
-            j++;
-        
-        
-        [UIView beginAnimations: @ "animationID" context: nil];
-        [UIView setAnimationDuration: 0.7f];
-        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationRepeatAutoreverses: NO];
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.joke_displyView cache: YES];
-        [UIView commitAnimations  ];
-            
-          
-           // fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
-             fact_countLbl.text=factcount;
-            fact_text.text=temp_txt;
-            m++;
-            
-            break;
-        }
-        
-        j++;
-        
-        if(j>=temp_factArray.count)
-        {
-            j=0;
-            
-        }
+        currentIndex=0;
     }
+    [UIView beginAnimations: @ "animationID" context: nil];
+    [UIView setAnimationDuration: 0.7f];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationRepeatAutoreverses: NO];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.joke_displyView cache: YES];
+    [UIView commitAnimations  ];
+    
+    
+    fact_countLbl.text=[NSString stringWithFormat:@"%d/%d",currentIndex+1,totCount];
+    fact_text.text=[self getMessageAtIndex:currentIndex];
+
     fact_text.textColor=[UIColor whiteColor];
     fact_text.TextAlignment=NSTextAlignmentCenter;
     fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
@@ -293,80 +356,114 @@ bool c=YES;
     
     NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
     NSArray *fav_array=[fdata objectForKey:@"fact_id"];
-    if(c==YES){
-        
-        
-        if(![fav_array containsObject:[[temp_factArray objectAtIndex:j-1]objectAtIndex:0]])
-        {
-            
-            
-            [[fdata valueForKey:@"fact_id"]  addObject:[[temp_factArray objectAtIndex:j-1]objectAtIndex:0]];
-            
-            [fdata writeToFile:path atomically:YES];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                  
-                                                            message:@"Added to favorites"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            
-            [alert show];
-            
-                   }
-        else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-                                                             message:@"Already added to favorites"
-                                                            delegate:self
-                                                   cancelButtonTitle:@"OK"
-                                                   otherButtonTitles:nil];
-            
-            [alert show];
-            
-            
-        }
-    }
-    else{
-        if(![fav_array containsObject:[[temp_factArray objectAtIndex:j+1]objectAtIndex:0]])
-        {
-            
-            
-            [[fdata valueForKey:@"fact_id"]  addObject:[[temp_factArray objectAtIndex:j+1]objectAtIndex:0]];
-            
-            [fdata writeToFile:path atomically:YES];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                  
-                                                            message:@"Added to favorites"
-                                  
-                                                           delegate:self
-                                  
-                                                  cancelButtonTitle:@"OK"
-                                  
-                                                  otherButtonTitles:nil];
-            
-            [alert show];
-            
-            
-        }
-        else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-                                   
-                                                             message:@"Already added to favorites"
-                                   
-                                                            delegate:self
-                                   
-                                                   cancelButtonTitle:@"OK"
-                                   
-                                                   otherButtonTitles:nil];
-            
-            [alert show];
-         
-            
-        }
-        
-        
-    }
+//    if(c==YES){
+//        
+//        
+//        if(![fav_array containsObject:[self getMessageIndexAtIndex:currentIndex]])
+//        {
+//            
+//            
+//            [[fdata valueForKey:@"fact_id"]  addObject:[self getMessageIndexAtIndex:currentIndex]];
+//            
+//            [fdata writeToFile:path atomically:YES];
+//            
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+//                                  
+//                                                            message:@"Added to favorites"
+//                                                           delegate:self
+//                                                  cancelButtonTitle:@"OK"
+//                                                  otherButtonTitles:nil];
+//            
+//            [alert show];
+//            
+//                   }
+//        else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+//                                                             message:@"Already added to favorites"
+//                                                            delegate:self
+//                                                   cancelButtonTitle:@"OK"
+//                                                   otherButtonTitles:nil];
+//            
+//            [alert show];
+//            
+//            
+//        }
+//    }
+//    else{
+//        if(![fav_array containsObject:[[temp_factArray objectAtIndex:j+1]objectAtIndex:0]])
+//        {
+//            
+//            
+//            [[fdata valueForKey:@"fact_id"]  addObject:[[temp_factArray objectAtIndex:j+1]objectAtIndex:0]];
+//            
+//            [fdata writeToFile:path atomically:YES];
+//            
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+//                                  
+//                                                            message:@"Added to favorites"
+//                                  
+//                                                           delegate:self
+//                                  
+//                                                  cancelButtonTitle:@"OK"
+//                                  
+//                                                  otherButtonTitles:nil];
+//            
+//            [alert show];
+//            
+//            
+//        }
+//        else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+//                                   
+//                                                             message:@"Already added to favorites"
+//                                   
+//                                                            delegate:self
+//                                   
+//                                                   cancelButtonTitle:@"OK"
+//                                   
+//                                                   otherButtonTitles:nil];
+//            
+//            [alert show];
+//         
+//            
+//        }
+//        
+//        
+//    }
     
 
+    
+    
+    
+    if(![fav_array containsObject:[self getMessageIndexAtIndex:currentIndex]])
+    {
+        
+        
+        [[fdata valueForKey:@"fact_id"]  addObject:[self getMessageIndexAtIndex:currentIndex]];
+        
+        [fdata writeToFile:path atomically:YES];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                              
+                                                        message:@"Added to favorites"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+        
+    }
+    else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+                                                         message:@"Already added to favorites"
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+        
+        [alert show];
+        
+        
+    }
+
+    
+    
 }
 
 
