@@ -23,12 +23,12 @@
                   symbolName = "-[HomeViewController parser]"
                   moduleName = "Funfacts"
                   urlString = "file:///Users/Jeethu/Documents/R&amp;D/FunBox/Funfacts/HomeViewController.h"
-                  timestampString = "418906812.578546"
+                  timestampString = "418908125.834896"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
                   endingLineNumber = "23"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -37,12 +37,12 @@
                   symbolName = "-[HomeViewController setParser:]"
                   moduleName = "Funfacts"
                   urlString = "file:///Users/Jeethu/Documents/R&amp;D/FunBox/Funfacts/HomeViewController.h"
-                  timestampString = "418906812.578947"
+                  timestampString = "418908125.835167"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "23"
                   endingLineNumber = "23"
-                  offsetFromSymbolStart = "31">
+                  offsetFromSymbolStart = "22">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -14,3 +14,4 @@ extern NSMutableArray *fps;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) HomeViewController *viewController;
 @end
+ 
