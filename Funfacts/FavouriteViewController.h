@@ -12,6 +12,7 @@
 
 @interface FavouriteViewController : UIViewController<MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *fav_view;
+@property (strong, nonatomic) IBOutlet UIView *displayView;
 - (IBAction)back_bttnclk:(id)sender;
 - (IBAction)remove_fav:(id)sender;
 - (IBAction)prv_fact:(id)sender;

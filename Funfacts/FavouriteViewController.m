@@ -131,12 +131,16 @@ HomeViewController * home_view;
                 } p++;
             }fc++;p=0;
         }
-        fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
+//        fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
         fav_view.text=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
         fav_txt= [[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
         p++;
     }
     ip=NO;
+    
+    fav_view.textColor=[UIColor whiteColor];
+    fav_view.TextAlignment=NSTextAlignmentCenter;
+    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 
 }
 
@@ -189,7 +193,9 @@ HomeViewController * home_view;
         
     }
     
-    
+    fav_view.textColor=[UIColor whiteColor];
+    fav_view.TextAlignment=NSTextAlignmentCenter;
+    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 }
 -(void)parsefunct{
     
@@ -257,7 +263,8 @@ HomeViewController * home_view;
             [UIView setAnimationDuration: 0.7f];
             [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
             [UIView setAnimationRepeatAutoreverses: NO];
-            [UIView setAnimationTransition: UIViewAnimationTransitionCurlDown forView: self.fav_view cache: YES];
+//            [UIView setAnimationTransition: UIViewAnimationTransitionCurlDown forView: self.fav_view cache: YES];
+            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.displayView cache: YES];
             [UIView commitAnimations  ];
             fav_view.text=fav_txt;
             //   ranlabel.text=rlabel;
@@ -267,7 +274,9 @@ HomeViewController * home_view;
         else{
             p=fav_temparray2.count-1;
         }} }
-    
+    fav_view.textColor=[UIColor whiteColor];
+    fav_view.TextAlignment=NSTextAlignmentCenter;
+    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 }
 
 - (IBAction)next_fact:(id)sender {
@@ -303,8 +312,8 @@ HomeViewController * home_view;
             [UIView setAnimationDuration: 0.7f];
             [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
             [UIView setAnimationRepeatAutoreverses: NO];
-            [UIView setAnimationTransition: UIViewAnimationTransitionCurlUp forView: self.fav_view cache: YES];
-            
+//            [UIView setAnimationTransition: UIViewAnimationTransitionCurlUp forView: self.fav_view cache: YES];
+            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.displayView cache: YES];
             [UIView commitAnimations  ];
             
             fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
@@ -317,7 +326,9 @@ HomeViewController * home_view;
             p=0;
         }
         }    }
-    
+    fav_view.textColor=[UIColor whiteColor];
+    fav_view.TextAlignment=NSTextAlignmentCenter;
+    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 }
 
 - (IBAction)remove_fav:(id)sender {
@@ -396,7 +407,9 @@ HomeViewController * home_view;
     }
     ip=YES;
     
-    
+    fav_view.textColor=[UIColor whiteColor];
+    fav_view.TextAlignment=NSTextAlignmentCenter;
+    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 }
 
 

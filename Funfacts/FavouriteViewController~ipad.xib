@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -7,81 +7,81 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouriteViewController">
             <connections>
-                <outlet property="displayView" destination="RPn-r4-JQe" id="dwH-uo-fC6"/>
-                <outlet property="fav_view" destination="rfg-qL-F0G" id="I4A-m4-LkD"/>
-                <outlet property="view" destination="1" id="RoF-u1-DeG"/>
+                <outlet property="displayView" destination="FBg-rI-bTo" id="z3s-uU-uhF"/>
+                <outlet property="fav_view" destination="x6X-CW-HDe" id="F1w-5M-B7O"/>
+                <outlet property="view" destination="6H4-2O-7bE" id="b0k-aT-KDr"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+        <view contentMode="scaleToFill" id="6H4-2O-7bE">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background.jpg" id="Nm9-fh-Uxg">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="YXa-fT-ffm">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D5J-Uk-SRW">
-                    <rect key="frame" x="259" y="20" width="41" height="39"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmK-7g-Kdn">
+                    <rect key="frame" x="683" y="31" width="65" height="61"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="Back.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="back_bttnclk:" destination="-1" eventType="touchUpInside" id="aLD-sx-IUs"/>
+                        <action selector="back_bttnclk:" destination="-1" eventType="touchUpInside" id="AGi-ur-EXy"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo.png" id="Y8B-3M-1Uk">
-                    <rect key="frame" x="20" y="20" width="124" height="39"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lj4-O0-J7a">
+                    <rect key="frame" x="50" y="30" width="200" height="63"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Footer.png" id="sZB-0h-sfX">
-                    <rect key="frame" x="0.0" y="497" width="320" height="72"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Footer.png" translatesAutoresizingMaskIntoConstraints="NO" id="bSL-uJ-ioE">
+                    <rect key="frame" x="0.0" y="928" width="768" height="97"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bAl-A7-Y4z">
-                    <rect key="frame" x="134" y="508" width="53" height="48"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6m-wY-9KV">
+                    <rect key="frame" x="359" y="942" width="77" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <state key="normal" image="heart_minus.png">
                         <color key="titleColor" red="0.99215692280000001" green="0.98039221759999995" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="remove_fav:" destination="-1" eventType="touchUpInside" id="0CW-a2-GDt"/>
+                        <action selector="remove_fav:" destination="-1" eventType="touchUpInside" id="SEh-tX-XWT"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wkm-Hi-oqR">
-                    <rect key="frame" x="252" y="508" width="48" height="48"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Al-Rq-tFa">
+                    <rect key="frame" x="677" y="941" width="71" height="71"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <state key="normal" image="next.png">
                         <color key="titleColor" red="0.99215692280000001" green="0.98039221759999995" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="next_fact:" destination="-1" eventType="touchUpInside" id="iBU-zM-vXF"/>
+                        <action selector="next_fact:" destination="-1" eventType="touchUpInside" id="Zcm-CC-UPw"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tB8-P1-RbU">
-                    <rect key="frame" x="20" y="508" width="48" height="48"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCJ-KL-zBE">
+                    <rect key="frame" x="20" y="941" width="71" height="71"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <state key="normal" image="prev.png">
-                        <color key="titleColor" red="0.99215692281723022" green="0.9803922176361084" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleColor" red="0.99215692280000001" green="0.98039221759999995" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="prv_fact:" destination="-1" eventType="touchUpInside" id="F2e-aV-H9Q"/>
+                        <action selector="prv_fact:" destination="-1" eventType="touchUpInside" id="quq-Yb-l2U"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" id="RPn-r4-JQe">
-                    <rect key="frame" x="20" y="98" width="280" height="353"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBg-rI-bTo">
+                    <rect key="frame" x="114" y="201" width="566" height="621"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="land_graphic_bg_white.png" id="Dij-uH-liV">
-                            <rect key="frame" x="0.0" y="0.0" width="280" height="353"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="land_graphic_bg_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="Geb-Dm-9DW">
+                            <rect key="frame" x="0.0" y="0.0" width="566" height="621"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="rfg-qL-F0G">
-                            <rect key="frame" x="20" y="21" width="240" height="311"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6X-CW-HDe">
+                            <rect key="frame" x="20" y="35" width="526" height="534"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,7 +94,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>

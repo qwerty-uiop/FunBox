@@ -61,9 +61,9 @@
 		FC5F459E18E3EED80064BC9A /* JokesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F459C18E3EED80064BC9A /* JokesViewController.m */; };
 		FC5F459F18E3EED80064BC9A /* JokesViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F459D18E3EED80064BC9A /* JokesViewController_iPad.xib */; };
 		FC5F45A318E3EF050064BC9A /* FactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F45A118E3EF050064BC9A /* FactsViewController.m */; };
-		FC5F45A418E3EF050064BC9A /* FactsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45A218E3EF050064BC9A /* FactsViewController_iPad.xib */; };
+		FC5F45A418E3EF050064BC9A /* FactsViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45A218E3EF050064BC9A /* FactsViewController~ipad.xib */; };
 		FC5F45A818E3EF530064BC9A /* FavouriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F45A618E3EF530064BC9A /* FavouriteViewController.m */; };
-		FC5F45A918E3EF530064BC9A /* FavouriteViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45A718E3EF530064BC9A /* FavouriteViewController_iPad.xib */; };
+		FC5F45A918E3EF530064BC9A /* FavouriteViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45A718E3EF530064BC9A /* FavouriteViewController~ipad.xib */; };
 		FC5F45AB18E3F0140064BC9A /* JokesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45AA18E3F0140064BC9A /* JokesViewController.xib */; };
 		FC5F45AD18E3F2160064BC9A /* FactsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45AC18E3F2160064BC9A /* FactsViewController.xib */; };
 		FC5F45AF18E3F2F10064BC9A /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45AE18E3F2F10064BC9A /* FavouriteViewController.xib */; };
@@ -160,10 +160,10 @@
 		FC5F459D18E3EED80064BC9A /* JokesViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JokesViewController_iPad.xib; sourceTree = "<group>"; };
 		FC5F45A018E3EF050064BC9A /* FactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactsViewController.h; sourceTree = "<group>"; };
 		FC5F45A118E3EF050064BC9A /* FactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactsViewController.m; sourceTree = "<group>"; };
-		FC5F45A218E3EF050064BC9A /* FactsViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FactsViewController_iPad.xib; sourceTree = "<group>"; };
+		FC5F45A218E3EF050064BC9A /* FactsViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FactsViewController~ipad.xib"; sourceTree = "<group>"; };
 		FC5F45A518E3EF530064BC9A /* FavouriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteViewController.h; sourceTree = "<group>"; };
 		FC5F45A618E3EF530064BC9A /* FavouriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteViewController.m; sourceTree = "<group>"; };
-		FC5F45A718E3EF530064BC9A /* FavouriteViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteViewController_iPad.xib; sourceTree = "<group>"; };
+		FC5F45A718E3EF530064BC9A /* FavouriteViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FavouriteViewController~ipad.xib"; sourceTree = "<group>"; };
 		FC5F45AA18E3F0140064BC9A /* JokesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JokesViewController.xib; sourceTree = "<group>"; };
 		FC5F45AC18E3F2160064BC9A /* FactsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FactsViewController.xib; sourceTree = "<group>"; };
 		FC5F45AE18E3F2F10064BC9A /* FavouriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteViewController.xib; sourceTree = "<group>"; };
@@ -338,11 +338,11 @@
 				FC5F45A018E3EF050064BC9A /* FactsViewController.h */,
 				FC5F45A118E3EF050064BC9A /* FactsViewController.m */,
 				FC5F45AC18E3F2160064BC9A /* FactsViewController.xib */,
-				FC5F45A218E3EF050064BC9A /* FactsViewController_iPad.xib */,
+				FC5F45A218E3EF050064BC9A /* FactsViewController~ipad.xib */,
 				FC5F45A518E3EF530064BC9A /* FavouriteViewController.h */,
 				FC5F45A618E3EF530064BC9A /* FavouriteViewController.m */,
 				FC5F45AE18E3F2F10064BC9A /* FavouriteViewController.xib */,
-				FC5F45A718E3EF530064BC9A /* FavouriteViewController_iPad.xib */,
+				FC5F45A718E3EF530064BC9A /* FavouriteViewController~ipad.xib */,
 				FCF6000A18ED996C00F8D970 /* FactClass.h */,
 				FCF6000B18ED996C00F8D970 /* FactClass.m */,
 				FC5F457A18E3E19D0064BC9A /* Images.xcassets */,
@@ -469,7 +469,7 @@
 				480B155118F7AD1200974EEA /* home_iPad@2x.jpg in Resources */,
 				480FF1EB18F50F2000B0A937 /* heart_minus.png in Resources */,
 				480FF1F418F516D400B0A937 /* SmsBtn.png in Resources */,
-				FC5F45A418E3EF050064BC9A /* FactsViewController_iPad.xib in Resources */,
+				FC5F45A418E3EF050064BC9A /* FactsViewController~ipad.xib in Resources */,
 				480FF1F318F516D400B0A937 /* EmailBtn.png in Resources */,
 				480FF1E618F50A5200B0A937 /* twitter.png in Resources */,
 				480FF1EC18F50F2000B0A937 /* heart.png in Resources */,
@@ -483,7 +483,7 @@
 				480B155018F7AD1200974EEA /* home_iPad.jpg in Resources */,
 				FC5F45AF18E3F2F10064BC9A /* FavouriteViewController.xib in Resources */,
 				FC5F45AB18E3F0140064BC9A /* JokesViewController.xib in Resources */,
-				FC5F45A918E3EF530064BC9A /* FavouriteViewController_iPad.xib in Resources */,
+				FC5F45A918E3EF530064BC9A /* FavouriteViewController~ipad.xib in Resources */,
 				FC5F456A18E3E19D0064BC9A /* InfoPlist.strings in Resources */,
 				480FF1E018F50A5200B0A937 /* land_graphic_bg_white.png in Resources */,
 				480FF1E818F50C8000B0A937 /* google-plus.png in Resources */,

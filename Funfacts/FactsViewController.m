@@ -132,7 +132,6 @@ bool c=YES;
             
             NSString *factcount = [NSString stringWithFormat:@"%d",m];
             factcount = [factcount stringByAppendingString:[NSString stringWithFormat:@"/%d ", k]];
-            fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
             fact_countLbl.text=factcount;
            fact_text.text=temp_txt;
             j++;
@@ -140,6 +139,12 @@ bool c=YES;
         }   j++;    }
     
     m++;
+
+    
+    
+    fact_text.textColor=[UIColor whiteColor];
+    fact_text.TextAlignment=NSTextAlignmentCenter;
+    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 
 
 }
@@ -205,6 +210,9 @@ bool c=YES;
         }
 
     }
+    fact_text.textColor=[UIColor whiteColor];
+    fact_text.TextAlignment=NSTextAlignmentCenter;
+    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 }
 
 - (IBAction)nextfact:(id)sender{
@@ -262,6 +270,9 @@ bool c=YES;
             
         }
     }
+    fact_text.textColor=[UIColor whiteColor];
+    fact_text.TextAlignment=NSTextAlignmentCenter;
+    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
 
 }
 
