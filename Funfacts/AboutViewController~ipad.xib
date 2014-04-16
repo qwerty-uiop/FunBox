@@ -33,8 +33,8 @@
                         <action selector="back_bttnclk:" destination="-1" eventType="touchUpInside" id="GOc-Pu-gU2"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="QWERTYUIOP.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bls-mB-e6L">
-                    <rect key="frame" x="311" y="967" width="153" height="57"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo_White.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bls-mB-e6L">
+                    <rect key="frame" x="292" y="928" width="208" height="96"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xf1-7q-r9S">
@@ -99,7 +99,7 @@
         <image name="Background.jpg" width="640" height="1136"/>
         <image name="EmailBtn.png" width="244" height="244"/>
         <image name="Logo.png" width="444" height="96"/>
-        <image name="QWERTYUIOP.png" width="182" height="21"/>
+        <image name="Logo_White.png" width="600" height="483"/>
         <image name="SmsBtn.png" width="244" height="244"/>
         <image name="facebook.png" width="128" height="128"/>
         <image name="land_graphic_bg.png" width="496" height="416"/>

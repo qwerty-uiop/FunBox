@@ -32,6 +32,7 @@
 		480FF1F018F513B900B0A937 /* GHContextMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 480FF1EF18F513B900B0A937 /* GHContextMenuView.m */; };
 		480FF1F318F516D400B0A937 /* EmailBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1F118F516D400B0A937 /* EmailBtn.png */; };
 		480FF1F418F516D400B0A937 /* SmsBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1F218F516D400B0A937 /* SmsBtn.png */; };
+		48BF3A6318FE7F55008FCB87 /* Logo_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 48BF3A6218FE7F55008FCB87 /* Logo_White.png */; };
 		48C2BC9218E92D11002973DE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9118E92D11002973DE /* AdSupport.framework */; };
 		48C2BC9418E92D1B002973DE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9318E92D1B002973DE /* AudioToolbox.framework */; };
 		48C2BC9618E92D23002973DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9518E92D23002973DE /* AVFoundation.framework */; };
@@ -118,6 +119,7 @@
 		480FF1EF18F513B900B0A937 /* GHContextMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHContextMenuView.m; sourceTree = "<group>"; };
 		480FF1F118F516D400B0A937 /* EmailBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmailBtn.png; sourceTree = "<group>"; };
 		480FF1F218F516D400B0A937 /* SmsBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmsBtn.png; sourceTree = "<group>"; };
+		48BF3A6218FE7F55008FCB87 /* Logo_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo_White.png; sourceTree = "<group>"; };
 		48C2BC9118E92D11002973DE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		48C2BC9318E92D1B002973DE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		48C2BC9518E92D23002973DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -248,6 +250,7 @@
 		480FF1C818F50A2400B0A937 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				48BF3A6218FE7F55008FCB87 /* Logo_White.png */,
 				FC5B75E818EFD713008C372D /* button_comment.png */,
 				480B154E18F7AD1200974EEA /* home_iPad.jpg */,
 				480B154F18F7AD1200974EEA /* home_iPad@2x.jpg */,
@@ -514,6 +517,7 @@
 				480B155F18F7CB4200974EEA /* README.md in Resources */,
 				FC5F45A918E3EF530064BC9A /* FavouriteViewController~ipad.xib in Resources */,
 				FC5F456A18E3E19D0064BC9A /* InfoPlist.strings in Resources */,
+				48BF3A6318FE7F55008FCB87 /* Logo_White.png in Resources */,
 				480FF1E018F50A5200B0A937 /* land_graphic_bg_white.png in Resources */,
 				480FF1E818F50C8000B0A937 /* google-plus.png in Resources */,
 				480FF1DA18F50A5200B0A937 /* Back.png in Resources */,
