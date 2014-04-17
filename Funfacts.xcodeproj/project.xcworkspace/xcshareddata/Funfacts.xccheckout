@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8BFCA987-5266-4775-8223-C1B84E738656</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Funfacts</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>29741C76-BDD5-41CC-AB15-55EDC32747EE</key>
+		<string>https://github.com/qwerty-uiop/FunBox.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Funfacts.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>29741C76-BDD5-41CC-AB15-55EDC32747EE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/qwerty-uiop/FunBox.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>29741C76-BDD5-41CC-AB15-55EDC32747EE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>29741C76-BDD5-41CC-AB15-55EDC32747EE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FunBox</string>
+		</dict>
+	</array>
+</dict>
+</plist>
