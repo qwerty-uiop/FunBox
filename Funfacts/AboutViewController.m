@@ -3,7 +3,7 @@
 //  Funfacts
 //
 //  Created by Vipin V on 27/03/14.
-//  Copyright (c) 2014 vipin. All rights reserved.
+//  Copyright (c) 2014 QWERTYUIOP. All rights reserved.
 //
 
 #import "AboutViewController.h"
