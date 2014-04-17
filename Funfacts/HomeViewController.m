@@ -58,7 +58,6 @@ FavouriteViewController * favourite_view;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)twisters_clkd:(id)sender {
@@ -108,8 +107,6 @@ FavouriteViewController * favourite_view;
 {
    
     bannerView_ = [[GADBannerView alloc] initWithAdSize:([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad)?kGADAdSizeLeaderboard:kGADAdSizeBanner];
-//            bannerView_.frame = CGRectMake(0.0, self.view.frame.size.height- bannerView_.frame.size.height, bannerView_.frame.size.width, bannerView_.frame.size.height);
- 
     bannerView_.adUnitID = adMobID;
     bannerView_.rootViewController = self;
     [self.view addSubview:bannerView_];
@@ -127,8 +124,6 @@ FavouriteViewController * favourite_view;
     } else {
         
         return true;
-        
-        
     }
 }
 -(void)setCustomAd

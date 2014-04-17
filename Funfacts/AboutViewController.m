@@ -36,7 +36,6 @@ HomeViewController * home_view;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     if([self IsNetworkAvailable])
     {
         [self InitializeBannerView];
@@ -45,7 +44,7 @@ HomeViewController * home_view;
     {
         [self setCustomAd];
     }
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,8 +64,6 @@ HomeViewController * home_view;
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         
         [controller setInitialText:@"FunBox"];
-//        [controller addURL:[NSURL URLWithString:@"http://think-n-relax.blogspot.in"]];
-        //        [controller addImage:[UIImage imageNamed:@"socialsharing-facebook-image.jpg"]];
         [self presentViewController:controller animated:YES completion:Nil];
     }
     else
@@ -74,7 +71,7 @@ HomeViewController * home_view;
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Service not available" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
-
+    
 }
 
 - (IBAction)ShareViaTwitter:(id)sender {
@@ -93,55 +90,39 @@ HomeViewController * home_view;
 }
 
 - (IBAction)ShareViaSMS:(id)sender {
-    //check if the device can send text messages
     if(![MFMessageComposeViewController canSendText]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
-       
+        
         
         
         return;
     }
     
-    //set receipients
-    //    NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
-    
-    //set message text
     NSString * message = @"Share the app -> FunBox";
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
-    //    [messageController setRecipients:recipients];
     [messageController setBody:message];
-    
-    // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
     
-
+    
 }
 
 - (IBAction)ShareViaEmail:(id)sender {
-    //check if the device can send text messages
     if(![MFMailComposeViewController canSendMail]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
     
-    //set receipients
-    //    NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
-    
-    //set message text
     NSString * message = @"Share the app-FunBox";
     
     MFMailComposeViewController *messageController = [[MFMailComposeViewController alloc] init];
     messageController.mailComposeDelegate = self;
-    //    [messageController setRecipients:recipients];
     [messageController setSubject:message];
     [messageController setMessageBody:@"Body of mail" isHTML:NO ];
-    
-    // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
 }
 
@@ -189,7 +170,7 @@ HomeViewController * home_view;
 {
     
     bannerView_ = [[GADBannerView alloc] initWithAdSize:([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad)?kGADAdSizeLeaderboard:kGADAdSizeBanner];
-           bannerView_.frame = CGRectMake(0.0, self.view.frame.size.height- bannerView_.frame.size.height, bannerView_.frame.size.width, bannerView_.frame.size.height);
+    bannerView_.frame = CGRectMake(0.0, self.view.frame.size.height- bannerView_.frame.size.height, bannerView_.frame.size.width, bannerView_.frame.size.height);
     
     bannerView_.adUnitID = adMobID;
     bannerView_.rootViewController = self;
@@ -207,8 +188,6 @@ HomeViewController * home_view;
     } else {
         
         return true;
-        
-        
     }
 }
 -(void)setCustomAd

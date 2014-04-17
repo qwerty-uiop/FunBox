@@ -67,7 +67,7 @@ NSString *path;
     [super viewDidLoad];
     
     if(![[[NSUserDefaults standardUserDefaults]
-     stringForKey:@"firststart"] isEqualToString:@"true"])
+          stringForKey:@"firststart"] isEqualToString:@"true"])
     {
         [[NSUserDefaults standardUserDefaults]
          setObject:@"true" forKey:@"firststart"];
@@ -90,9 +90,6 @@ NSString *path;
     
     totCount=[[temp_dict objectForKey:@"record" ]count];
     fact_countLbl.text=[NSString stringWithFormat:@"1/%d",totCount];
-//    NSLog(@"Value %@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:0]objectForKey:@"message"]valueForKey:@"text"]);
-    
-    
     fact_text.text=[self getMessageAtIndex:currentIndex];
     [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
     fact_text.textColor=[UIColor whiteColor];
@@ -169,7 +166,7 @@ NSString *path;
 }
 
 - (IBAction)favourite_bttnClkd:(id)sender {
-   
+    
     
     
     if(![self isAlreadyInFavourites])
@@ -182,7 +179,7 @@ NSString *path;
                     duration:0.5
                     position:@"center"];
         
-         [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
+        [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
         
     }
     else{
@@ -194,7 +191,7 @@ NSString *path;
         [self.view makeToast:@"Sucesfully removed from favourites"
                     duration:0.5
                     position:@"center"];
-         [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
+        [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
     }
 }
 
@@ -213,7 +210,7 @@ NSString *path;
     else{
         return true;
     }
-
+    
     
 }
 #pragma mark - Initialize context methods
@@ -268,51 +265,36 @@ NSString *path;
 }
 #pragma mark - Share methods
 - (void)SendSmsFn {
-    //check if the device can send text messages
     if(![MFMessageComposeViewController canSendText]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
-    
-    //set receipients
-    //    NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
-    
-    //set message text
     NSString * message = fact_text.text ;
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;
-    //    [messageController setRecipients:recipients];
     [messageController setBody:message];
     
-    // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
     
     
 }
 
 - (void)SendMailFn {
-    //check if the device can send text messages
     if(![MFMailComposeViewController canSendMail]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
     
-//    set receipients
-//     NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
-    
-//    set message text
     NSString * message = @"FunBox";
     
     MFMailComposeViewController *messageController = [[MFMailComposeViewController alloc] init];
     messageController.mailComposeDelegate = self;
-//    [messageController setRecipients:recipients];
     [messageController setSubject:message];
     [messageController setMessageBody:fact_text.text isHTML:NO ];
     
-//    Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
 }
 
@@ -322,8 +304,6 @@ NSString *path;
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         
         [controller setInitialText:[NSString stringWithFormat:@"FubBox-%@",fact_text.text]];
-//        [controller addURL:[NSURL URLWithString:@"http://think-n-relax.blogspot.in"]];
-//        [controller addImage:[UIImage imageNamed:@"socialsharing-facebook-image.jpg"]];
         [self presentViewController:controller animated:YES completion:Nil];
     }
     else

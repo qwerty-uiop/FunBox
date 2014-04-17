@@ -452,7 +452,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = vipin;
+				ORGANIZATIONNAME = QWERTYUIOP;
 				TargetAttributes = {
 					FC5F457F18E3E19D0064BC9A = {
 						TestTargetID = FC5F455B18E3E19D0064BC9A;

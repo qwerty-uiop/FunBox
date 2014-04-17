@@ -47,9 +47,9 @@ int current_index;
 - (NSInteger) numberOfMenuItems
 {
     if(fav_index_message_array.count==0)
-        {
-            return 0;
-        }
+    {
+        return 0;
+    }
     else
     {
         return 4;
@@ -99,9 +99,6 @@ int current_index;
             break;
     }
     
-    //    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    //    [alertView show];
-    
 }
 - (void)viewDidLoad
 {
@@ -111,16 +108,12 @@ int current_index;
     
     current_index=0;
     
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-//    [fav_temparray2 removeAllObjects];
-//    NSInteger pt=0,ps=0;
     [self RefreshView];
     
-    
-    //    Added by jeethu
     GHContextMenuView* overlay = [[GHContextMenuView alloc] init];
     overlay.dataSource = self;
     overlay.delegate = self;
@@ -129,8 +122,8 @@ int current_index;
     [fav_view setUserInteractionEnabled:YES];
     [fav_view addGestureRecognizer:_longPressRecognizer];
     
-
-  
+    
+    
 }
 -(void)RefreshView
 {
@@ -143,26 +136,25 @@ int current_index;
     }
     if([fav_index_message_array count]<=0)
     {
-//        current_index=-1;
         _countLabel.hidden=YES;
     }
     else
     {
         _countLabel.hidden=NO;
     }
-
+    
     
     if(fav_index_message_array.count==0)
     {
-
+        
         fav_view.text=@"Add facts to favorites";
+        
+        
+        [fav_view setUserInteractionEnabled:NO];
     }
     else{
         
         fav_view.text=[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:1];
-        //            fav_txt= [[fav_temparray2 objectAtIndex:0]objectAtIndex:1];
-        
-        
     }
     
     _countLabel.text=[NSString stringWithFormat:@"%d/%d",current_index+1,[fav_index_message_array count]];
@@ -178,11 +170,8 @@ int current_index;
     for(int i=0;i<3;i++)
     {
         NSDictionary* tmp1=[[master_data objectForKey:@"head"] objectForKey:[tagValuesArray objectAtIndex:i]];
-//
-//        NSDictionary* tmp2=[tmp1 objectForKey:@"record"];
         for(int j=0;j<[[tmp1 objectForKey:@"record"] count];j++)
         {
-//             NSLog(@"Value %@",[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"index"]valueForKey:@"text"]);
             
             if([fav_index_array containsObject:[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"index"]valueForKey:@"text"]])
             {
@@ -191,13 +180,6 @@ int current_index;
             }
         }
     }
-    
-    
-    
-//    NSLog(@"Value %@",[[master_data objectForKey:@"head"] objectAtIndex:1]);
-//    NSDictionary* temp1=[[master_data objectForKey:@"head"]objectForKey:@"facts"];
-////    NSDictionary* temp2=[temp1 objectForKey:@"facts"];
-//    NSLog(@"Value %@",temp1);
 }
 -(void)parsefunct{
     
@@ -227,7 +209,6 @@ int current_index;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)back_bttnclk:(id)sender {
@@ -237,52 +218,6 @@ int current_index;
 }
 
 - (IBAction)prv_fact:(id)sender {
-//    if(ip==YES)
-//    {
-//        p--;
-//    }
-//    ip=NO;
-//    if(fav_temparray2.count==1){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
-//                                                        message:@"Only one favorite item"
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"OK"
-//                                              otherButtonTitles:nil];
-//        
-//        [alert show];
-//         }
-//    
-//    else
-//    {
-//        
-//        if(bol)
-//        {
-//            p=p-2;
-//            bol=NO;
-//        }
-//        for(id factitem in fav_temparray2)
-//        {if(p>=0){
-//            fav_txt=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1] ;
-//            // NSString *rlabel=[[shuffle objectAtIndex:s]objectAtIndex:2] ;
-//            [UIView beginAnimations: @ "animationID" context: nil];
-//            [UIView setAnimationDuration: 0.7f];
-//            [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-//            [UIView setAnimationRepeatAutoreverses: NO];
-////            [UIView setAnimationTransition: UIViewAnimationTransitionCurlDown forView: self.fav_view cache: YES];
-//            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.displayView cache: YES];
-//            [UIView commitAnimations  ];
-//            fav_view.text=fav_txt;
-//            //   ranlabel.text=rlabel;
-//            p--;
-//            break;
-//        }
-//        else{
-//            p=fav_temparray2.count-1;
-//        }} }
-//    fav_view.textColor=[UIColor whiteColor];
-//    fav_view.TextAlignment=NSTextAlignmentCenter;
-//    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
-    
     if([fav_index_message_array count]>0)
     {
         current_index--;
@@ -297,7 +232,7 @@ int current_index;
         [UIView setAnimationRepeatAutoreverses: NO];
         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.displayView cache: YES];
         [UIView commitAnimations  ];
-
+        
         
         
         _countLabel.text=[NSString stringWithFormat:@"%d/%d",current_index+1,[fav_index_message_array count]];
@@ -312,53 +247,6 @@ int current_index;
 }
 
 - (IBAction)next_fact:(id)sender {
-//    if(ip==YES)
-//    {
-//        p++;
-//    }
-//    ip=NO;
-//    if(fav_temparray2.count==1){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
-//                                                        message:@"Only one favorite item"
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"OK"
-//                                              otherButtonTitles:nil];
-//        
-//        [alert show];
-//            }
-//    
-//    else
-//    {
-//        
-//        if(!bol)
-//        {
-//            p=p+2;
-//            bol=YES;
-//        }
-//        
-//        for(id factitem in fav_temparray2)
-//        {if(p<fav_temparray2.count)
-//        {
-//            fav_txt=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1] ;
-//            [UIView beginAnimations: @ "animationID" context: nil];
-//            [UIView setAnimationDuration: 0.7f];
-//            [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-//            [UIView setAnimationRepeatAutoreverses: NO];
-////            [UIView setAnimationTransition: UIViewAnimationTransitionCurlUp forView: self.fav_view cache: YES];
-//            [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.displayView cache: YES];
-//            [UIView commitAnimations  ];
-//            
-//            fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
-//            fav_view.text=fav_txt;
-//            // ranlabel.text=rlabel;
-//            p++;
-//            break;
-//        }
-//        else{
-//            p=0;
-//        }
-//        }    }
-    
     
     if([fav_index_message_array count]>0)
     {
@@ -405,18 +293,15 @@ int current_index;
     if([fav_index_message_array count]>0)
     {
         
-//        NSLog(@"Value %@",[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:0]);
-//    NSLog(@"Value %@",fdata);
         [[fdata valueForKey:@"fact_id"]  removeObject:[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:0]];
         
         [fdata writeToFile:path atomically:YES];
-//        [fav_temparray2 removeObject:[fav_temparray2 objectAtIndex:p]] ;
         [self.view makeToast:@"Sucesfully removed from favourites"
                     duration:0.5
                     position:@"center"];
         
         [self RefreshView];
-
+        
     }
     
     
@@ -427,17 +312,12 @@ int current_index;
 
 
 - (void)SendSmsFn {
-    //check if the device can send text messages
     if(![MFMessageComposeViewController canSendText]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
     
-    //set receipients
-    //    NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
-    
-    //set message text
     NSString * message = fav_view.text ;
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
@@ -459,10 +339,6 @@ int current_index;
         return;
     }
     
-    //set receipients
-    //    NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
-    
-    //set message text
     NSString * message = @"FunBox";
     
     MFMailComposeViewController *messageController = [[MFMailComposeViewController alloc] init];
@@ -481,8 +357,6 @@ int current_index;
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         
         [controller setInitialText:[NSString stringWithFormat:@"FubBox-%@",fav_view.text]];
-        //        [controller addURL:[NSURL URLWithString:@"http://think-n-relax.blogspot.in"]];
-        //        [controller addImage:[UIImage imageNamed:@"socialsharing-facebook-image.jpg"]];
         [self presentViewController:controller animated:YES completion:Nil];
     }
     else
