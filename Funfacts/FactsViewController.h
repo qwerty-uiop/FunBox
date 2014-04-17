@@ -12,9 +12,7 @@
 
 @interface FactsViewController : UIViewController<MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate>
 {
-    NSString * category_name;
 }
-@property (nonatomic, retain) NSString *category_name;
 
 - (IBAction)back_bttnclk:(id)sender;
 - (IBAction)prvfact:(id)sender;

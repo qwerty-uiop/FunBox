@@ -9,7 +9,6 @@
 
 #import <UIKit/UIKit.h>
 #import "GADBannerView.h"
-NSMutableArray *fps;
 NSDictionary *master_data;
 NSString* g_category;
 @class FactClass;

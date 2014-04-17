@@ -18,22 +18,146 @@ NSString *temp_txt;
 @end
 
 @implementation FactsViewController
-@synthesize fact_text,category_name,fact_countLbl;
+@synthesize fact_text,fact_countLbl;
 HomeViewController * home_view;
-NSInteger count,j=0,k=0,n=0,m=1;
-NSMutableArray *temp_factArray;
 NSDictionary *temp_dict;
 int currentIndex,totCount;
-bool c=YES;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    //    Context menu Init
+    GHContextMenuView* overlay = [[GHContextMenuView alloc] init];
+    overlay.dataSource = self;
+    overlay.delegate = self;
+    
+    UILongPressGestureRecognizer* _longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:overlay action:@selector(longPressDetected:)];
+    [self.fact_text setUserInteractionEnabled:YES];
+    [fact_text addGestureRecognizer:_longPressRecognizer];
+    currentIndex=0;
+    temp_dict=[[NSDictionary alloc]initWithDictionary:[[master_data objectForKey:@"head"] objectForKey:g_category] ];
+    
+    totCount=[[temp_dict objectForKey:@"record" ]count];
+    fact_countLbl.text=[NSString stringWithFormat:@"1/%d",totCount];
+    NSLog(@"Value %@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:0]objectForKey:@"message"]valueForKey:@"text"]);
+    fact_text.text=[self getMessageAtIndex:currentIndex];
+    
+    fact_text.textColor=[UIColor whiteColor];
+    fact_text.TextAlignment=NSTextAlignmentCenter;
+    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
+    
+    
+}
+-(NSString*)getMessageAtIndex:(int)index
+{
+    NSString* message=[NSString stringWithFormat:@"%@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:index]objectForKey:@"message"]valueForKey:@"text"]];
+    return message;
+}
+-(NSString*)getMessageIndexAtIndex:(int)index
+{
+    NSString* message=[NSString stringWithFormat:@"%@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:index]objectForKey:@"index"]valueForKey:@"text"]];
+    return message;
+}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (IBAction)back_bttnclk:(id)sender {
+    home_view =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil ];
+    
+    [self presentViewController: home_view animated: NO completion:nil];
+}
+- (IBAction)prvfact:(id)sender{
+    
+    currentIndex--;
+    if(currentIndex<0)
+    {
+        currentIndex=totCount-1;
+    }
+    [UIView beginAnimations: @ "animationID" context: nil];
+    [UIView setAnimationDuration: 0.7f];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationRepeatAutoreverses: NO];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.joke_displyView cache: YES];
+    [UIView commitAnimations  ];
+    fact_countLbl.text=[NSString stringWithFormat:@"%d/%d",currentIndex+1,totCount];
+    fact_text.text=[self getMessageAtIndex:currentIndex];
+    fact_text.textColor=[UIColor whiteColor];
+    fact_text.TextAlignment=NSTextAlignmentCenter;
+    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
+}
+
+- (IBAction)nextfact:(id)sender{
+    
+    currentIndex++;
+    if(currentIndex==totCount)
+    {
+        currentIndex=0;
+    }
+    [UIView beginAnimations: @ "animationID" context: nil];
+    [UIView setAnimationDuration: 0.7f];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationRepeatAutoreverses: NO];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.joke_displyView cache: YES];
+    [UIView commitAnimations  ];
+    fact_countLbl.text=[NSString stringWithFormat:@"%d/%d",currentIndex+1,totCount];
+    fact_text.text=[self getMessageAtIndex:currentIndex];
+    fact_text.textColor=[UIColor whiteColor];
+    fact_text.TextAlignment=NSTextAlignmentCenter;
+    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
+    
+}
+
+- (IBAction)favourite_bttnClkd:(id)sender {
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"favorites.plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath: path])
+    {
+        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"favorites" ofType:@"plist"];
+        
+        [fileManager copyItemAtPath:bundle toPath: path error:&error];
+    }
+    NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    NSArray *fav_array=[fdata objectForKey:@"fact_id"];
+    
+    if(![fav_array containsObject:[self getMessageIndexAtIndex:currentIndex]])
+    {
+        [[fdata valueForKey:@"fact_id"]  addObject:[self getMessageIndexAtIndex:currentIndex]];
+        
+        [fdata writeToFile:path atomically:YES];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                              
+                                                        message:@"Added to favorites"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+    }
+    else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+                                                         message:@"Already added to favorites"
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+#pragma mark - Initialize context methods
 - (NSInteger) numberOfMenuItems
 {
     return 4;
@@ -63,7 +187,7 @@ bool c=YES;
 
 - (void) didSelectItemAtIndex:(NSInteger)selectedIndex forMenuAtPoint:(CGPoint)point
 {
-//    NSString* msg = nil;
+    //    NSString* msg = nil;
     switch (selectedIndex) {
         case 0:
             [self ShareViaFbFn];
@@ -81,393 +205,9 @@ bool c=YES;
             break;
     }
     
-//    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [alertView show];
     
 }
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-//    Added by jeethu
-    GHContextMenuView* overlay = [[GHContextMenuView alloc] init];
-    overlay.dataSource = self;
-    overlay.delegate = self;
-    
-    UILongPressGestureRecognizer* _longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:overlay action:@selector(longPressDetected:)];
-    [self.fact_text setUserInteractionEnabled:YES];
-    [fact_text addGestureRecognizer:_longPressRecognizer];
-
-    
-    
-    // Do any additional setup after loading the view from its nib.
-    count=0;
-    k=0;
-    j=0;
-    n=0;
-    m=1;
-    c=YES;
-    // Do any additional setup after loading the view from its nib.
-    temp_factArray=fps;
-   
-    
-    // NSLog(@"At: %@",fps);
-    
-    for(id counter in temp_factArray)
-    {
-        if ([[[temp_factArray objectAtIndex:n]objectAtIndex:2]isEqualToString: category_name])
-        {
-            
-            k++;
-        }
-        n++;
-    }
-    
-//    NSLog(@"Value %@",fps);
-//    temp_factArray=[[NSMutableArray al]initWithArray:];
-//    //NSLog(@"At: %d",k);
-    
-    for(id factitem in temp_factArray)
-    {
-        
-        if ([[[temp_factArray objectAtIndex:j]objectAtIndex:2]isEqualToString: category_name])
-        {
-            
-            temp_txt=[[temp_factArray objectAtIndex:j]objectAtIndex:1] ;
-            
-            NSString *factcount = [NSString stringWithFormat:@"%d",m];
-            factcount = [factcount stringByAppendingString:[NSString stringWithFormat:@"/%d ", k]];
-            fact_countLbl.text=factcount;
-           fact_text.text=temp_txt;
-            j++;
-            break;
-        }   j++;    }
-    
-    m++;
-
-    
-    
-    
-    currentIndex=0;
-    temp_dict=[[NSDictionary alloc]initWithDictionary:[[master_data objectForKey:@"head"] objectForKey:g_category] ];
-    
-    totCount=[[temp_dict objectForKey:@"record" ]count];
-    fact_countLbl.text=[NSString stringWithFormat:@"1/%d",totCount];
-    NSLog(@"Value %@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:0]objectForKey:@"message"]valueForKey:@"text"]);
-    fact_text.text=[self getMessageAtIndex:currentIndex];
-    
-    fact_text.textColor=[UIColor whiteColor];
-    fact_text.TextAlignment=NSTextAlignmentCenter;
-    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
-
-
-}
--(NSString*)getMessageAtIndex:(int)index
-{
-    NSString* message=[NSString stringWithFormat:@"%@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:index]objectForKey:@"message"]valueForKey:@"text"]];
-    return message;
-}
--(NSString*)getMessageIndexAtIndex:(int)index
-{
-    NSString* message=[NSString stringWithFormat:@"%@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:index]objectForKey:@"index"]valueForKey:@"text"]];
-    return message;
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)back_bttnclk:(id)sender {
-    home_view =[[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil ];
-    
-    [self presentViewController: home_view animated: NO completion:nil];
-}
-- (IBAction)prvfact:(id)sender{
-//    if(c)
-//    {
-//        j=j-2;
-//        c=NO;
-//        m=m-2;
-//    }
-//    if(j<0)
-//    {
-//        j=temp_factArray.count;
-//        j--;
-//    }
-//    
-//    for(id factitem in temp_factArray)
-//    {
-//        
-//        if ([[[temp_factArray objectAtIndex:j]objectAtIndex:2]isEqualToString: category_name])
-//        {
-//            //  NSLog(@"Arrayprev: %d",j);
-//            temp_txt=[[temp_factArray objectAtIndex:j]objectAtIndex:1] ;
-//            j--;
-//            
-//            if(m<=0)
-//            {
-//                m=k;
-//            }
-//            NSString *factcount = [NSString stringWithFormat:@"%d",m];
-//            factcount = [factcount stringByAppendingString:[NSString stringWithFormat:@"/%d ", k]];
-//        [UIView beginAnimations: @ "animationID" context: nil];
-//        [UIView setAnimationDuration: 0.7f];
-//        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-//        [UIView setAnimationRepeatAutoreverses: NO];
-//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.joke_displyView cache: YES];
-//        [UIView commitAnimations  ];
-//            fact_text.text=[NSString stringWithFormat:@"%@", temp_txt];
-//
-//            fact_countLbl.text=factcount;
-//            m--;
-//            break;
-//        }
-//        
-//        j--;
-//        
-//        if(j<0)
-//        {
-//            j=temp_factArray.count;
-//            j--;
-//        }
-//
-//    }
-    
-    
-    
-    
-    
-    
-    currentIndex--;
-    if(currentIndex<0)
-    {
-        currentIndex=totCount-1;
-    }
-    [UIView beginAnimations: @ "animationID" context: nil];
-    [UIView setAnimationDuration: 0.7f];
-    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationRepeatAutoreverses: NO];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView: self.joke_displyView cache: YES];
-    [UIView commitAnimations  ];
-    
-    
-    fact_countLbl.text=[NSString stringWithFormat:@"%d/%d",currentIndex+1,totCount];
-    fact_text.text=[self getMessageAtIndex:currentIndex];
-    
-
-    fact_text.textColor=[UIColor whiteColor];
-    fact_text.TextAlignment=NSTextAlignmentCenter;
-    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
-}
-
-- (IBAction)nextfact:(id)sender{
-//    if(!c)
-//    {
-//        j=j+2;
-//        c=YES;
-//        m= m+2;
-//    }
-//    
-//    if(j>=temp_factArray.count)
-//    {
-//        j=0;  }
-//    
-//    for(id factitem in temp_factArray)
-//    {
-//        
-//        if ([[[temp_factArray objectAtIndex:j]objectAtIndex:2]isEqualToString: category_name])
-//        {
-//            
-//            if(m>k)
-//            {
-//                m=1;
-//            }
-//            // NSLog(@"Araaynext: %d",j);
-//            temp_txt=[[temp_factArray objectAtIndex:j]objectAtIndex:1] ;
-//            
-//            NSString *factcount = [NSString stringWithFormat:@"%d",m];
-//            factcount = [factcount stringByAppendingString:[NSString stringWithFormat:@"/%d ", k]];
-//            
-//            j++;
-//        
-//        
-//        [UIView beginAnimations: @ "animationID" context: nil];
-//        [UIView setAnimationDuration: 0.7f];
-//        [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-//        [UIView setAnimationRepeatAutoreverses: NO];
-//        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.joke_displyView cache: YES];
-//        [UIView commitAnimations  ];
-//            
-//          
-//           // fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
-//             fact_countLbl.text=factcount;
-//            fact_text.text=temp_txt;
-//            m++;
-//            
-//            break;
-//        }
-//        
-//        j++;
-//        
-//        if(j>=temp_factArray.count)
-//        {
-//            j=0;
-//            
-//        }
-//    }
-    
-    
-    currentIndex++;
-    if(currentIndex==totCount)
-    {
-        currentIndex=0;
-    }
-    [UIView beginAnimations: @ "animationID" context: nil];
-    [UIView setAnimationDuration: 0.7f];
-    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationRepeatAutoreverses: NO];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView: self.joke_displyView cache: YES];
-    [UIView commitAnimations  ];
-    
-    
-    fact_countLbl.text=[NSString stringWithFormat:@"%d/%d",currentIndex+1,totCount];
-    fact_text.text=[self getMessageAtIndex:currentIndex];
-
-    fact_text.textColor=[UIColor whiteColor];
-    fact_text.TextAlignment=NSTextAlignmentCenter;
-    fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
-
-}
-
-- (IBAction)favourite_bttnClkd:(id)sender {
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"favorites.plist"];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if (![fileManager fileExistsAtPath: path])
-    {
-        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"favorites" ofType:@"plist"];
-        
-        [fileManager copyItemAtPath:bundle toPath: path error:&error];
-    }
-    
-    NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    NSArray *fav_array=[fdata objectForKey:@"fact_id"];
-//    if(c==YES){
-//        
-//        
-//        if(![fav_array containsObject:[self getMessageIndexAtIndex:currentIndex]])
-//        {
-//            
-//            
-//            [[fdata valueForKey:@"fact_id"]  addObject:[self getMessageIndexAtIndex:currentIndex]];
-//            
-//            [fdata writeToFile:path atomically:YES];
-//            
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-//                                  
-//                                                            message:@"Added to favorites"
-//                                                           delegate:self
-//                                                  cancelButtonTitle:@"OK"
-//                                                  otherButtonTitles:nil];
-//            
-//            [alert show];
-//            
-//                   }
-//        else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-//                                                             message:@"Already added to favorites"
-//                                                            delegate:self
-//                                                   cancelButtonTitle:@"OK"
-//                                                   otherButtonTitles:nil];
-//            
-//            [alert show];
-//            
-//            
-//        }
-//    }
-//    else{
-//        if(![fav_array containsObject:[[temp_factArray objectAtIndex:j+1]objectAtIndex:0]])
-//        {
-//            
-//            
-//            [[fdata valueForKey:@"fact_id"]  addObject:[[temp_factArray objectAtIndex:j+1]objectAtIndex:0]];
-//            
-//            [fdata writeToFile:path atomically:YES];
-//            
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-//                                  
-//                                                            message:@"Added to favorites"
-//                                  
-//                                                           delegate:self
-//                                  
-//                                                  cancelButtonTitle:@"OK"
-//                                  
-//                                                  otherButtonTitles:nil];
-//            
-//            [alert show];
-//            
-//            
-//        }
-//        else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-//                                   
-//                                                             message:@"Already added to favorites"
-//                                   
-//                                                            delegate:self
-//                                   
-//                                                   cancelButtonTitle:@"OK"
-//                                   
-//                                                   otherButtonTitles:nil];
-//            
-//            [alert show];
-//         
-//            
-//        }
-//        
-//        
-//    }
-    
-
-    
-    
-    
-    if(![fav_array containsObject:[self getMessageIndexAtIndex:currentIndex]])
-    {
-        
-        
-        [[fdata valueForKey:@"fact_id"]  addObject:[self getMessageIndexAtIndex:currentIndex]];
-        
-        [fdata writeToFile:path atomically:YES];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                              
-                                                        message:@"Added to favorites"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
-        
-    }
-    else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-                                                         message:@"Already added to favorites"
-                                                        delegate:self
-                                               cancelButtonTitle:@"OK"
-                                               otherButtonTitles:nil];
-        
-        [alert show];
-        
-        
-    }
-
-    
-    
-}
-
-
-
+#pragma mark - Share methods
 - (void)SendSmsFn {
     //check if the device can send text messages
     if(![MFMessageComposeViewController canSendText]) {
@@ -501,19 +241,19 @@ bool c=YES;
         return;
     }
     
-    //set receipients
-    //    NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
+//    set receipients
+//     NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
     
-    //set message text
+//    set message text
     NSString * message = @"FunBox";
     
     MFMailComposeViewController *messageController = [[MFMailComposeViewController alloc] init];
     messageController.mailComposeDelegate = self;
-    //    [messageController setRecipients:recipients];
+//    [messageController setRecipients:recipients];
     [messageController setSubject:message];
     [messageController setMessageBody:fact_text.text isHTML:NO ];
     
-    // Present message view controller on screen
+//    Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
 }
 
@@ -524,7 +264,7 @@ bool c=YES;
         
         [controller setInitialText:[NSString stringWithFormat:@"FubBox-%@",fact_text.text]];
 //        [controller addURL:[NSURL URLWithString:@"http://think-n-relax.blogspot.in"]];
-        //        [controller addImage:[UIImage imageNamed:@"socialsharing-facebook-image.jpg"]];
+//        [controller addImage:[UIImage imageNamed:@"socialsharing-facebook-image.jpg"]];
         [self presentViewController:controller animated:YES completion:Nil];
     }
     else
@@ -547,7 +287,7 @@ bool c=YES;
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Service not available" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
-
+    
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate methods

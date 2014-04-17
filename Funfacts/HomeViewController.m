@@ -8,11 +8,8 @@
 
 #import "HomeViewController.h"
 #import "AboutViewController.h"
-#import "JokesViewController.h"
 #import "FactsViewController.h"
 #import "FavouriteViewController.h"
-#import "FactClass.h"
-#import "FactsListViewController.h"
 #import "XMLReader.h"
 
 @interface HomeViewController ()
@@ -21,10 +18,8 @@
 
 @implementation HomeViewController
 AboutViewController * about_view;
-JokesViewController * jokes_view;
 FactsViewController * facts_view;
 FavouriteViewController * favourite_view;
-FactsListViewController * factsListView;
 @synthesize parser,fun_facts;
 
 
@@ -41,13 +36,10 @@ FactsListViewController * factsListView;
     
    _version.text = displayVersionNumber;
     
-//    NSLog(@"Value %f",CGRectGetMaxX(self.view.frame));
-//    NSLog(@"Value %f",CGRectGetMaxY(self.view.frame));
     
     [self InitializeBannerView];
     fun_facts= [[NSMutableArray alloc] initWithCapacity:3 ];
-	// Do any additional setup after loading the view, typically from a nib.
-    if(fps==nil)
+    if(master_data==nil)
     {
         [self parse_xml];
     }
@@ -75,33 +67,9 @@ FactsListViewController * factsListView;
 -(void)parse_xml{
     
     NSString *xmlPath = [[NSBundle mainBundle] pathForResource:@"funboxmaster" ofType:@"xml"];
-    NSData *data = [NSData dataWithContentsOfFile:xmlPath];
-//    parser = [[NSXMLParser alloc] initWithData:data];
-//    parser.delegate=self;
-//    [parser setShouldResolveExternalEntities:YES];
-//    
-//    BOOL success =  [parser parse];
-//    if(success){
-//          NSLog(@"No Errors");
-//        fps=fun_facts;
-////        NSLog(@"Atghggg: %@",fps);
-//    }
-//    else{
-//          NSLog(@"Error Error Error!!!");
-//    }
-//
-//
-//   // funDict=[[NSMutableDictionary alloc]initWithDictionary:dict];
-////
-    NSError *parseError = nil;
+    NSData *data = [NSData dataWithContentsOfFile:xmlPath];    NSError *parseError = nil;
     master_data = [XMLReader dictionaryForXMLData:data error:&parseError];
-    
-    NSDictionary* aaaa=[[NSDictionary alloc]initWithDictionary:master_data];
-    
-    
-    
-    
-    
+
 }
 
 - (IBAction)jokes_clkd:(id)sender {
@@ -137,46 +105,5 @@ FactsListViewController * factsListView;
     request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [bannerView_ loadRequest:request];
 }
-//#pragma mark - Parser Delegates
-//
-//- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
-//  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
-//    attributes:(NSDictionary *)attributeDict {
-//    
-//    if([elementName isEqualToString:@"head"]){
-//        
-//    }
-//    
-//    else if([elementName isEqualToString:@"jokes"]){
-//        
-////        facts=[[FactClass alloc]init];
-////        facts.factid=[attributeDict objectForKey:@"A"];
-////        facts.factid=[attributeDict valueForKey:@"record"];
-////        facts.fact=[attributeDict objectForKey:@"B"];
-////        facts.category=[attributeDict objectForKey:@"C"];
-////        [ fun_facts addObject:[NSMutableArray arrayWithObjects:facts.factid ,facts.fact,facts.category,nil]] ;
-//        // i++;
-//        
-////        NSLog(@"didStartElement %@",);
-//        
-//        
-//        
-//    }
-//}
-//
-//- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
-//  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-////    if([elementName isEqualToString:@"Records"])
-////        
-////        return;
-////    
-////    if([elementName isEqualToString:@"Row"]){
-////       // [books addObject:aBook];
-////        facts=nil;
-////    }
-////    else
-////        [facts setValue:currentElementValue forKey:elementName];
-////    currentElementValue=nil;
-//}
 
 @end
