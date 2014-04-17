@@ -8,7 +8,6 @@
 
 #import "AboutViewController.h"
 #import "HomeViewController.h"
-
 @interface AboutViewController ()
 
 @end
@@ -28,6 +27,8 @@ HomeViewController * home_view;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self InitializeBannerView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,6 +80,10 @@ HomeViewController * home_view;
     if(![MFMessageComposeViewController canSendText]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
+        
+       
+        
+        
         return;
     }
     
@@ -161,5 +166,19 @@ HomeViewController * home_view;
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+#pragma mark - Initialize AdBanner
+-(void)InitializeBannerView
+{
+    
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad)?kGADAdSizeLeaderboard:kGADAdSizeBanner];
+           bannerView_.frame = CGRectMake(0.0, self.view.frame.size.height- bannerView_.frame.size.height, bannerView_.frame.size.width, bannerView_.frame.size.height);
+    
+    bannerView_.adUnitID = adMobID;
+    bannerView_.rootViewController = self;
+    [self.view addSubview:bannerView_];
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
+    [bannerView_ loadRequest:request];
 }
 @end

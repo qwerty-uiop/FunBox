@@ -62,6 +62,8 @@ FavouriteViewController * favourite_view;
     about_view =[[AboutViewController alloc] initWithNibName:@"AboutViewController" bundle:nil ];
     
     [self presentViewController: about_view animated: NO completion:nil];
+    
+    
 }
 
 -(void)parse_xml{

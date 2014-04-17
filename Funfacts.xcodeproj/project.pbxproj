@@ -30,6 +30,7 @@
 		480FF1F318F516D400B0A937 /* EmailBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1F118F516D400B0A937 /* EmailBtn.png */; };
 		480FF1F418F516D400B0A937 /* SmsBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1F218F516D400B0A937 /* SmsBtn.png */; };
 		4871DE6018FF983C003D8785 /* Qwertyuiop_Transparent_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE5F18FF983C003D8785 /* Qwertyuiop_Transparent_White.png */; };
+		4871DE9418FFB61C003D8785 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 4871DE9318FFB61C003D8785 /* UIView+Toast.m */; };
 		48C2BC9218E92D11002973DE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9118E92D11002973DE /* AdSupport.framework */; };
 		48C2BC9418E92D1B002973DE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9318E92D1B002973DE /* AudioToolbox.framework */; };
 		48C2BC9618E92D23002973DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9518E92D23002973DE /* AVFoundation.framework */; };
@@ -103,6 +104,8 @@
 		480FF1F118F516D400B0A937 /* EmailBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmailBtn.png; sourceTree = "<group>"; };
 		480FF1F218F516D400B0A937 /* SmsBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmsBtn.png; sourceTree = "<group>"; };
 		4871DE5F18FF983C003D8785 /* Qwertyuiop_Transparent_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Qwertyuiop_Transparent_White.png; sourceTree = "<group>"; };
+		4871DE9218FFB61C003D8785 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		4871DE9318FFB61C003D8785 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		48C2BC9118E92D11002973DE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		48C2BC9318E92D1B002973DE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		48C2BC9518E92D23002973DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -250,6 +253,15 @@
 			path = GHContext;
 			sourceTree = "<group>";
 		};
+		4871DE9118FFB61C003D8785 /* iToast */ = {
+			isa = PBXGroup;
+			children = (
+				4871DE9218FFB61C003D8785 /* UIView+Toast.h */,
+				4871DE9318FFB61C003D8785 /* UIView+Toast.m */,
+			);
+			path = iToast;
+			sourceTree = "<group>";
+		};
 		48C2BC8118E92C54002973DE /* AdMob */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +320,7 @@
 		FC5F456518E3E19D0064BC9A /* Funfacts */ = {
 			isa = PBXGroup;
 			children = (
+				4871DE9118FFB61C003D8785 /* iToast */,
 				480B155418F7C30700974EEA /* Resources */,
 				480B155218F7AEDD00974EEA /* Helper */,
 				480FF1ED18F513A700B0A937 /* GHContext */,
@@ -494,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4871DE9418FFB61C003D8785 /* UIView+Toast.m in Sources */,
 				FC5F45A818E3EF530064BC9A /* FavouriteViewController.m in Sources */,
 				FC5F45A318E3EF050064BC9A /* FactsViewController.m in Sources */,
 				FC5F457918E3E19D0064BC9A /* HomeViewController.m in Sources */,

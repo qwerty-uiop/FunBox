@@ -9,6 +9,8 @@
 #import "FavouriteViewController.h"
 #import "HomeViewController.h"
 #import "GHContextMenuView.h"
+#import "UIView+Toast.h"
+
 BOOL pub,ip,bol=YES;
 NSString *pub_fact,*fav_txt;
 NSArray *fav_array;
@@ -240,7 +242,7 @@ int current_index;
 //        NSDictionary* tmp2=[tmp1 objectForKey:@"record"];
         for(int j=0;j<[[tmp1 objectForKey:@"record"] count];j++)
         {
-             NSLog(@"Value %@",[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"index"]valueForKey:@"text"]);
+//             NSLog(@"Value %@",[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"index"]valueForKey:@"text"]);
             
             if([fav_index_array containsObject:[[[[tmp1 objectForKey:@"record"] objectAtIndex:j]objectForKey:@"index"]valueForKey:@"text"]])
             {
@@ -460,83 +462,18 @@ int current_index;
     }
     
     NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
-//    //   NSArray *fav_array=[fdata objectForKey:@"f_id"];
-//    if(ip==NO){
-//        if(bol==YES){
-//            p--;
-//            if(p<0){
-//                p=fav_temparray2.count-1;
-//                
-//            }
-//        }
-//        else{
-//            p++;
-//            if(p>=fav_temparray2.count){
-//                p=0;
-//            }
-//        }
-//    }
-//    if(fav_temparray2.count==0)
-//    {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
-//                                                        message:@"No more favorites !"
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"OK"otherButtonTitles:nil];
-//        
-//        [alert show];
-//      
-//        fav_view.text=@"Add favorite facts";
-//    }
-//    else{
-//        // NSLog(@"Before: %@",[[test5 objectAtIndex:p]objectAtIndex:1]) ;
-//        [[fdata valueForKey:@"f_id"]  removeObject:[[fav_temparray2 objectAtIndex:p]objectAtIndex:0]];
-//        
-//        [fdata writeToFile:path atomically:YES];
-//        [fav_temparray2 removeObject:[fav_temparray2 objectAtIndex:p]] ;
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-//                                                        message:@"Removed from favorites"
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"OK"
-//                                              otherButtonTitles:nil];
-//        
-//        [alert show];
-//        if(fav_temparray2.count==0){
-//            
-//            fav_view.text=@"Add favorite facts";
-//        }
-//        else{
-//            if(p>=fav_temparray2.count)
-//            {
-//                p=0;
-//            }
-//            fav_view.text=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
-//            
-//            //   ffff=[[test5 objectAtIndex:p]objectAtIndex:1];
-//            
-//        }
-//        
-//    }
-//    ip=YES;
-//
-    
-    
-    
     if([fav_index_message_array count]>0)
     {
         
-        NSLog(@"Value %@",[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:0]);
-    NSLog(@"Value %@",fdata);
+//        NSLog(@"Value %@",[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:0]);
+//    NSLog(@"Value %@",fdata);
         [[fdata valueForKey:@"fact_id"]  removeObject:[[fav_index_message_array objectAtIndex:current_index]objectAtIndex:0]];
         
         [fdata writeToFile:path atomically:YES];
 //        [fav_temparray2 removeObject:[fav_temparray2 objectAtIndex:p]] ;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                                        message:@"Removed from favorites"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        
-        [alert show];
+        [self.view makeToast:@"Sucesfully removed from favourites"
+                    duration:0.5
+                    position:@"center"];
         
         [self RefreshView];
 

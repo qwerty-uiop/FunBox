@@ -10,9 +10,12 @@
 
 #import <MessageUI/MessageUI.h>
 #import <Social/Social.h>
+#import "GADBannerView.h"
 
 @interface AboutViewController : UIViewController<MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate>
-
+{
+    GADBannerView *bannerView_;
+}
 - (IBAction)back_bttnclk:(id)sender;
 - (IBAction)ShareViaFb:(id)sender;
 - (IBAction)ShareViaTwitter:(id)sender;

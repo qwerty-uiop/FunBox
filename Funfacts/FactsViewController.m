@@ -9,6 +9,7 @@
 #import "FactsViewController.h"
 #import "HomeViewController.h"
 #import "GHContextMenuView.h"
+#import "UIView+Toast.h"
 NSMutableArray *fps;
 NSString *temp_txt;
 @interface FactsViewController ()<GHContextOverlayViewDataSource, GHContextOverlayViewDelegate>
@@ -46,7 +47,7 @@ int currentIndex,totCount;
     
     totCount=[[temp_dict objectForKey:@"record" ]count];
     fact_countLbl.text=[NSString stringWithFormat:@"1/%d",totCount];
-    NSLog(@"Value %@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:0]objectForKey:@"message"]valueForKey:@"text"]);
+//    NSLog(@"Value %@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:0]objectForKey:@"message"]valueForKey:@"text"]);
     fact_text.text=[self getMessageAtIndex:currentIndex];
     
     fact_text.textColor=[UIColor whiteColor];
@@ -139,21 +140,15 @@ int currentIndex,totCount;
         
         [fdata writeToFile:path atomically:YES];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                              
-                                                        message:@"Added to favorites"
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        [self.view makeToast:@"Added to favourites"
+                    duration:0.5
+                    position:@"center"];
         
     }
-    else{UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-                                                         message:@"Already added to favorites"
-                                                        delegate:self
-                                               cancelButtonTitle:@"OK"
-                                               otherButtonTitles:nil];
-        [alert show];
+    else{
+        [self.view makeToast:@"Already added to favourites"
+                    duration:0.5
+                    position:@"center"];
     }
 }
 

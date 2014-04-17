@@ -105,7 +105,7 @@ NSInteger GHBorderWidth; ;
     int i = 0;
     for( CALayer *menuItemLayer in self.menuItems ) {
         if( CGRectContainsPoint( menuItemLayer.frame, point ) ) {
-            NSLog( @"Touched Layer at index: %i", i);
+//            NSLog( @"Touched Layer at index: %i", i);
             return i;
         }
         i++;

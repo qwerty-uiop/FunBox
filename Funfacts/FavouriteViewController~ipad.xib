@@ -88,6 +88,10 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="IJv-dd-QaW" appends="YES" id="wP5-Jq-1cF"/>
+                                <outletCollection property="gestureRecognizers" destination="RWu-Bd-WzG" appends="YES" id="BW1-vK-g7V"/>
+                            </connections>
                         </textView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -101,9 +105,20 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <swipeGestureRecognizer direction="right" id="RWu-Bd-WzG">
+            <connections>
+                <action selector="prv_fact:" destination="-1" id="mxS-2O-JWF"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="left" id="IJv-dd-QaW">
+            <connections>
+                <action selector="next_fact:" destination="-1" id="Chd-ED-xMb"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <image name="Back.png" width="48" height="48"/>
