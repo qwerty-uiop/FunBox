@@ -34,6 +34,9 @@
 		4871DE9518FFBA64003D8785 /* FactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F45A118E3EF050064BC9A /* FactsViewController.m */; };
 		4871DE9818FFC8DF003D8785 /* HelpScreenipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE9618FFC8DF003D8785 /* HelpScreenipad.jpg */; };
 		4871DE9918FFC8DF003D8785 /* HelpScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE9718FFC8DF003D8785 /* HelpScreen.jpg */; };
+		4871DE9D18FFD1B1003D8785 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4871DE9C18FFD1B1003D8785 /* Reachability.m */; };
+		4871DEA018FFD59B003D8785 /* Ad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE9E18FFD59B003D8785 /* Ad.jpg */; };
+		4871DEA118FFD59B003D8785 /* AdiPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE9F18FFD59B003D8785 /* AdiPad.jpg */; };
 		48C2BC9218E92D11002973DE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9118E92D11002973DE /* AdSupport.framework */; };
 		48C2BC9418E92D1B002973DE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9318E92D1B002973DE /* AudioToolbox.framework */; };
 		48C2BC9618E92D23002973DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9518E92D23002973DE /* AVFoundation.framework */; };
@@ -111,6 +114,10 @@
 		4871DE9318FFB61C003D8785 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		4871DE9618FFC8DF003D8785 /* HelpScreenipad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HelpScreenipad.jpg; sourceTree = "<group>"; };
 		4871DE9718FFC8DF003D8785 /* HelpScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HelpScreen.jpg; sourceTree = "<group>"; };
+		4871DE9B18FFD1B1003D8785 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4871DE9C18FFD1B1003D8785 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4871DE9E18FFD59B003D8785 /* Ad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ad.jpg; sourceTree = "<group>"; };
+		4871DE9F18FFD59B003D8785 /* AdiPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AdiPad.jpg; sourceTree = "<group>"; };
 		48C2BC9118E92D11002973DE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		48C2BC9318E92D1B002973DE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		48C2BC9518E92D23002973DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -199,6 +206,8 @@
 		480B155218F7AEDD00974EEA /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				4871DE9A18FFD1B1003D8785 /* Reachability */,
+				4871DE9118FFB61C003D8785 /* iToast */,
 				480B155B18F7CB4100974EEA /* XMLReader */,
 				480B155318F7AEED00974EEA /* Macro.h */,
 			);
@@ -226,6 +235,8 @@
 		480FF1C818F50A2400B0A937 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4871DE9E18FFD59B003D8785 /* Ad.jpg */,
+				4871DE9F18FFD59B003D8785 /* AdiPad.jpg */,
 				4871DE9618FFC8DF003D8785 /* HelpScreenipad.jpg */,
 				4871DE9718FFC8DF003D8785 /* HelpScreen.jpg */,
 				4871DE5F18FF983C003D8785 /* Qwertyuiop_Transparent_White.png */,
@@ -266,7 +277,17 @@
 				4871DE9218FFB61C003D8785 /* UIView+Toast.h */,
 				4871DE9318FFB61C003D8785 /* UIView+Toast.m */,
 			);
-			path = iToast;
+			name = iToast;
+			path = ../iToast;
+			sourceTree = "<group>";
+		};
+		4871DE9A18FFD1B1003D8785 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				4871DE9B18FFD1B1003D8785 /* Reachability.h */,
+				4871DE9C18FFD1B1003D8785 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		48C2BC8118E92C54002973DE /* AdMob */ = {
@@ -327,7 +348,6 @@
 		FC5F456518E3E19D0064BC9A /* Funfacts */ = {
 			isa = PBXGroup;
 			children = (
-				4871DE9118FFB61C003D8785 /* iToast */,
 				480B155418F7C30700974EEA /* Resources */,
 				480B155218F7AEDD00974EEA /* Helper */,
 				480FF1ED18F513A700B0A937 /* GHContext */,
@@ -481,6 +501,7 @@
 				FC5F45B618E3FC4F0064BC9A /* AboutViewController~ipad.xib in Resources */,
 				480B155018F7AD1200974EEA /* home_iPad.jpg in Resources */,
 				FC5F45AF18E3F2F10064BC9A /* FavouriteViewController.xib in Resources */,
+				4871DEA118FFD59B003D8785 /* AdiPad.jpg in Resources */,
 				4871DE9818FFC8DF003D8785 /* HelpScreenipad.jpg in Resources */,
 				480B155618F7C32B00974EEA /* funboxmaster.xml in Resources */,
 				480B155F18F7CB4200974EEA /* README.md in Resources */,
@@ -497,6 +518,7 @@
 				480FF1E318F50A5200B0A937 /* next.png in Resources */,
 				FC51758818F59D5400136698 /* favorites.plist in Resources */,
 				48C2BCB818E93221002973DE /* README.txt in Resources */,
+				4871DEA018FFD59B003D8785 /* Ad.jpg in Resources */,
 				FC5F459A18E3E3400064BC9A /* HomeViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +542,7 @@
 				FC5F45A818E3EF530064BC9A /* FavouriteViewController.m in Sources */,
 				FC5F45A318E3EF050064BC9A /* FactsViewController.m in Sources */,
 				FC5F457918E3E19D0064BC9A /* HomeViewController.m in Sources */,
+				4871DE9D18FFD1B1003D8785 /* Reachability.m in Sources */,
 				480FF1F018F513B900B0A937 /* GHContextMenuView.m in Sources */,
 				480B156018F7CB4200974EEA /* XMLReader.m in Sources */,
 				FC5F45B318E3FC230064BC9A /* AboutViewController.m in Sources */,

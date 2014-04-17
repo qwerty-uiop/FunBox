@@ -11,6 +11,7 @@
 #import "FactsViewController.h"
 #import "FavouriteViewController.h"
 #import "XMLReader.h"
+#import "Reachability.h"
 
 @interface HomeViewController ()
 
@@ -37,7 +38,16 @@ FavouriteViewController * favourite_view;
    _version.text = displayVersionNumber;
     
     
-    [self InitializeBannerView];
+  
+    
+    if([self IsNetworkAvailable])
+    {
+          [self InitializeBannerView];
+    }
+    else
+    {
+        [self setCustomAd];
+    }
     fun_facts= [[NSMutableArray alloc] initWithCapacity:3 ];
     if(master_data==nil)
     {
@@ -106,6 +116,26 @@ FavouriteViewController * favourite_view;
     GADRequest *request = [GADRequest request];
     request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [bannerView_ loadRequest:request];
+}
+
+-(BOOL)IsNetworkAvailable
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        return false;
+    } else {
+        
+        return true;
+        
+        
+    }
+}
+-(void)setCustomAd
+{
+    UIImageView* adView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetMaxX(self.view.frame), 50)];
+    adView.image=[UIImage imageNamed:k_DeviceTypeIsIpad?@"AdiPad.jpg":@"Ad.jpg"];
+    [self.view addSubview:adView];
 }
 
 @end
