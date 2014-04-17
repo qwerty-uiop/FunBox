@@ -64,8 +64,6 @@
 		FC5F45B318E3FC230064BC9A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F45B118E3FC230064BC9A /* AboutViewController.m */; };
 		FC5F45B418E3FC230064BC9A /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45B218E3FC230064BC9A /* AboutViewController.xib */; };
 		FC5F45B618E3FC4F0064BC9A /* AboutViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F45B518E3FC4F0064BC9A /* AboutViewController~ipad.xib */; };
-		FCAFBB2F18EDCE62008EBB22 /* home.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FCAFBB2E18EDCE62008EBB22 /* home.jpg */; };
-		FCAFBB3118EDD124008EBB22 /* about.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FCAFBB3018EDD124008EBB22 /* about.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,8 +154,6 @@
 		FC5F45B118E3FC230064BC9A /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		FC5F45B218E3FC230064BC9A /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		FC5F45B518E3FC4F0064BC9A /* AboutViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "AboutViewController~ipad.xib"; sourceTree = "<group>"; };
-		FCAFBB2E18EDCE62008EBB22 /* home.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = home.jpg; sourceTree = "<group>"; };
-		FCAFBB3018EDD124008EBB22 /* about.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = about.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,8 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				FC51758718F59D5400136698 /* favorites.plist */,
-				FCAFBB2E18EDCE62008EBB22 /* home.jpg */,
-				FCAFBB3018EDD124008EBB22 /* about.jpg */,
 				FC5F456718E3E19D0064BC9A /* Funfacts-Info.plist */,
 				FC5F456818E3E19D0064BC9A /* InfoPlist.strings */,
 				FC5F456B18E3E19D0064BC9A /* main.m */,
@@ -452,7 +446,6 @@
 				480FF1DD18F50A5200B0A937 /* Footer.png in Resources */,
 				480FF1DF18F50A5200B0A937 /* home_4.jpg in Resources */,
 				FC5F45AD18E3F2160064BC9A /* FactsViewController.xib in Resources */,
-				FCAFBB2F18EDCE62008EBB22 /* home.jpg in Resources */,
 				480B155118F7AD1200974EEA /* home_iPad@2x.jpg in Resources */,
 				480FF1EB18F50F2000B0A937 /* heart_minus.png in Resources */,
 				480FF1F418F516D400B0A937 /* SmsBtn.png in Resources */,
@@ -460,7 +453,6 @@
 				480FF1F318F516D400B0A937 /* EmailBtn.png in Resources */,
 				480FF1E618F50A5200B0A937 /* twitter.png in Resources */,
 				480FF1EC18F50F2000B0A937 /* heart.png in Resources */,
-				FCAFBB3118EDD124008EBB22 /* about.jpg in Resources */,
 				FC5F457B18E3E19D0064BC9A /* Images.xcassets in Resources */,
 				480FF1DB18F50A5200B0A937 /* Background.jpg in Resources */,
 				FC5F459818E3E3080064BC9A /* HomeViewController.xib in Resources */,

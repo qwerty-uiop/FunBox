@@ -3,7 +3,7 @@
 //  Funfacts
 //
 //  Created by Jeethu on 11/04/14.
-//  Copyright (c) 2014 vipin. All rights reserved.
+//  Copyright (c) 2014 QWERTYUIOP. All rights reserved.
 //
 
 #ifndef Funfacts_Macro_h
