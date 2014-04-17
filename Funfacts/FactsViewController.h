@@ -13,6 +13,9 @@
 @interface FactsViewController : UIViewController<MFMessageComposeViewControllerDelegate,MFMailComposeViewControllerDelegate>
 {
 }
+@property (strong, nonatomic) IBOutlet UIButton *favBtn;
+- (IBAction)DismissHelpFn:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *helpView;
 
 - (IBAction)back_bttnclk:(id)sender;
 - (IBAction)prvfact:(id)sender;

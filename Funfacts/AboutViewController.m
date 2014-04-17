@@ -12,6 +12,15 @@
 
 @end
 
+@implementation UITextView (DisableCopyPaste)
+
+- (BOOL)canBecomeFirstResponder
+{
+    return NO;
+}
+
+@end
+
 @implementation AboutViewController
 HomeViewController * home_view;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

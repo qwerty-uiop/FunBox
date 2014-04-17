@@ -31,6 +31,9 @@
 		480FF1F418F516D400B0A937 /* SmsBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 480FF1F218F516D400B0A937 /* SmsBtn.png */; };
 		4871DE6018FF983C003D8785 /* Qwertyuiop_Transparent_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE5F18FF983C003D8785 /* Qwertyuiop_Transparent_White.png */; };
 		4871DE9418FFB61C003D8785 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 4871DE9318FFB61C003D8785 /* UIView+Toast.m */; };
+		4871DE9518FFBA64003D8785 /* FactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5F45A118E3EF050064BC9A /* FactsViewController.m */; };
+		4871DE9818FFC8DF003D8785 /* HelpScreenipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE9618FFC8DF003D8785 /* HelpScreenipad.jpg */; };
+		4871DE9918FFC8DF003D8785 /* HelpScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE9718FFC8DF003D8785 /* HelpScreen.jpg */; };
 		48C2BC9218E92D11002973DE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9118E92D11002973DE /* AdSupport.framework */; };
 		48C2BC9418E92D1B002973DE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9318E92D1B002973DE /* AudioToolbox.framework */; };
 		48C2BC9618E92D23002973DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9518E92D23002973DE /* AVFoundation.framework */; };
@@ -106,6 +109,8 @@
 		4871DE5F18FF983C003D8785 /* Qwertyuiop_Transparent_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Qwertyuiop_Transparent_White.png; sourceTree = "<group>"; };
 		4871DE9218FFB61C003D8785 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		4871DE9318FFB61C003D8785 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		4871DE9618FFC8DF003D8785 /* HelpScreenipad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HelpScreenipad.jpg; sourceTree = "<group>"; };
+		4871DE9718FFC8DF003D8785 /* HelpScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = HelpScreen.jpg; sourceTree = "<group>"; };
 		48C2BC9118E92D11002973DE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		48C2BC9318E92D1B002973DE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		48C2BC9518E92D23002973DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -221,6 +226,8 @@
 		480FF1C818F50A2400B0A937 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4871DE9618FFC8DF003D8785 /* HelpScreenipad.jpg */,
+				4871DE9718FFC8DF003D8785 /* HelpScreen.jpg */,
 				4871DE5F18FF983C003D8785 /* Qwertyuiop_Transparent_White.png */,
 				480B154E18F7AD1200974EEA /* home_iPad.jpg */,
 				480B154F18F7AD1200974EEA /* home_iPad@2x.jpg */,
@@ -463,6 +470,7 @@
 				480FF1EB18F50F2000B0A937 /* heart_minus.png in Resources */,
 				480FF1F418F516D400B0A937 /* SmsBtn.png in Resources */,
 				FC5F45A418E3EF050064BC9A /* FactsViewController~ipad.xib in Resources */,
+				4871DE9918FFC8DF003D8785 /* HelpScreen.jpg in Resources */,
 				480FF1F318F516D400B0A937 /* EmailBtn.png in Resources */,
 				480FF1E618F50A5200B0A937 /* twitter.png in Resources */,
 				480FF1EC18F50F2000B0A937 /* heart.png in Resources */,
@@ -473,6 +481,7 @@
 				FC5F45B618E3FC4F0064BC9A /* AboutViewController~ipad.xib in Resources */,
 				480B155018F7AD1200974EEA /* home_iPad.jpg in Resources */,
 				FC5F45AF18E3F2F10064BC9A /* FavouriteViewController.xib in Resources */,
+				4871DE9818FFC8DF003D8785 /* HelpScreenipad.jpg in Resources */,
 				480B155618F7C32B00974EEA /* funboxmaster.xml in Resources */,
 				480B155F18F7CB4200974EEA /* README.md in Resources */,
 				FC5F45A918E3EF530064BC9A /* FavouriteViewController~ipad.xib in Resources */,
@@ -523,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4871DE9518FFBA64003D8785 /* FactsViewController.m in Sources */,
 				FC5F458E18E3E19D0064BC9A /* FunfactsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

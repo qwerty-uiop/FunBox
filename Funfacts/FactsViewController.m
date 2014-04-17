@@ -18,15 +18,46 @@ NSString *temp_txt;
 @property (weak, nonatomic) IBOutlet UITextView *fact_text;
 @end
 
+
+@implementation UITextView (DisableCopyPaste)
+
+- (BOOL)canBecomeFirstResponder
+{
+    return NO;
+}
+
+@end
+
+
 @implementation FactsViewController
 @synthesize fact_text,fact_countLbl;
 HomeViewController * home_view;
 NSDictionary *temp_dict;
 int currentIndex,totCount;
+NSMutableDictionary *fdata;
+NSArray *fav_array;
+NSString *path;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+        
+        NSError *error;
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        path = [documentsDirectory stringByAppendingPathComponent:@"favorites.plist"];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        if (![fileManager fileExistsAtPath: path])
+        {
+            NSString *bundle = [[NSBundle mainBundle] pathForResource:@"favorites" ofType:@"plist"];
+            
+            [fileManager copyItemAtPath:bundle toPath: path error:&error];
+        }
+        fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
+        fav_array=[fdata objectForKey:@"fact_id"];
     }
     return self;
 }
@@ -34,6 +65,18 @@ int currentIndex,totCount;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if(![[[NSUserDefaults standardUserDefaults]
+     stringForKey:@"firststart"] isEqualToString:@"true"])
+    {
+        [[NSUserDefaults standardUserDefaults]
+         setObject:@"true" forKey:@"firststart"];
+        
+        [self.view addSubview:_helpView];
+    }
+    
+    
+    
     //    Context menu Init
     GHContextMenuView* overlay = [[GHContextMenuView alloc] init];
     overlay.dataSource = self;
@@ -48,8 +91,10 @@ int currentIndex,totCount;
     totCount=[[temp_dict objectForKey:@"record" ]count];
     fact_countLbl.text=[NSString stringWithFormat:@"1/%d",totCount];
 //    NSLog(@"Value %@",[[[[temp_dict objectForKey:@"record"]  objectAtIndex:0]objectForKey:@"message"]valueForKey:@"text"]);
-    fact_text.text=[self getMessageAtIndex:currentIndex];
     
+    
+    fact_text.text=[self getMessageAtIndex:currentIndex];
+    [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
     fact_text.textColor=[UIColor whiteColor];
     fact_text.TextAlignment=NSTextAlignmentCenter;
     fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
@@ -69,6 +114,10 @@ int currentIndex,totCount;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (IBAction)DismissHelpFn:(id)sender {
+    [_helpView removeFromSuperview];
 }
 
 - (IBAction)back_bttnclk:(id)sender {
@@ -94,6 +143,7 @@ int currentIndex,totCount;
     fact_text.textColor=[UIColor whiteColor];
     fact_text.TextAlignment=NSTextAlignmentCenter;
     fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
+    [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
 }
 
 - (IBAction)nextfact:(id)sender{
@@ -114,27 +164,15 @@ int currentIndex,totCount;
     fact_text.textColor=[UIColor whiteColor];
     fact_text.TextAlignment=NSTextAlignmentCenter;
     fact_text.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
+    [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
     
 }
 
 - (IBAction)favourite_bttnClkd:(id)sender {
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"favorites.plist"];
+   
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    if (![fileManager fileExistsAtPath: path])
-    {
-        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"favorites" ofType:@"plist"];
-        
-        [fileManager copyItemAtPath:bundle toPath: path error:&error];
-    }
-    NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    NSArray *fav_array=[fdata objectForKey:@"fact_id"];
-    
-    if(![fav_array containsObject:[self getMessageIndexAtIndex:currentIndex]])
+    if(![self isAlreadyInFavourites])
     {
         [[fdata valueForKey:@"fact_id"]  addObject:[self getMessageIndexAtIndex:currentIndex]];
         
@@ -144,14 +182,40 @@ int currentIndex,totCount;
                     duration:0.5
                     position:@"center"];
         
+         [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
+        
     }
     else{
-        [self.view makeToast:@"Already added to favourites"
+        
+        [[fdata valueForKey:@"fact_id"]  removeObject:[self getMessageIndexAtIndex:currentIndex]];
+        
+        [fdata writeToFile:path atomically:YES];
+        //        [fav_temparray2 removeObject:[fav_temparray2 objectAtIndex:p]] ;
+        [self.view makeToast:@"Sucesfully removed from favourites"
                     duration:0.5
                     position:@"center"];
+         [_favBtn setImage:[self isAlreadyInFavourites]?[UIImage imageNamed:@"heart_minus"]:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
     }
 }
 
+
+-(BOOL)isAlreadyInFavourites
+{
+    
+    fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    fav_array=[fdata objectForKey:@"fact_id"];
+    
+    if(![fav_array containsObject:[self getMessageIndexAtIndex:currentIndex]])
+    {
+        return false;
+        
+    }
+    else{
+        return true;
+    }
+
+    
+}
 #pragma mark - Initialize context methods
 - (NSInteger) numberOfMenuItems
 {

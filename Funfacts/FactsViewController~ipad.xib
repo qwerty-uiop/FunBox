@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="fact_countLbl" destination="oCV-QH-fu9" id="bYu-jE-6PV"/>
                 <outlet property="fact_text" destination="eC7-u8-PAN" id="ExK-7F-IcI"/>
+                <outlet property="favBtn" destination="Ool-Hm-UZV" id="HBe-XJ-Xos"/>
+                <outlet property="helpView" destination="lhS-TK-Zau" id="ibx-UD-Uh6"/>
                 <outlet property="joke_displyView" destination="PAH-Os-pdE" id="BJL-Mt-pqj"/>
                 <outlet property="view" destination="iBX-cZ-MgM" id="n0k-fC-qgE"/>
             </connections>
@@ -121,11 +123,34 @@
                 <action selector="nextfact:" destination="-1" id="LI0-Wh-w6O"/>
             </connections>
         </swipeGestureRecognizer>
+        <view alpha="0.69999999999999996" contentMode="scaleToFill" id="lhS-TK-Zau">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HelpScreenipad.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="zJH-y8-KKP">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKg-4g-evm">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="DismissHelpFn:" destination="-1" eventType="touchUpInside" id="Vka-S0-07Z"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
     <resources>
         <image name="Back.png" width="48" height="48"/>
         <image name="Background.jpg" width="640" height="1136"/>
         <image name="Footer.png" width="648" height="106"/>
+        <image name="HelpScreenipad.jpg" width="768" height="1024"/>
         <image name="Logo.png" width="444" height="96"/>
         <image name="heart.png" width="128" height="128"/>
         <image name="land_graphic_bg_white.png" width="496" height="416"/>

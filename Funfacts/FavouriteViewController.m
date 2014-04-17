@@ -21,6 +21,15 @@ NSInteger p=0,fc=0;
 
 @end
 
+@implementation UITextView (DisableCopyPaste)
+
+- (BOOL)canBecomeFirstResponder
+{
+    return NO;
+}
+
+@end
+
 @implementation FavouriteViewController
 @synthesize fav_view;
 HomeViewController * home_view;
@@ -37,7 +46,15 @@ int current_index;
 }
 - (NSInteger) numberOfMenuItems
 {
-    return 4;
+    if(fav_index_message_array.count==0)
+        {
+            return 0;
+        }
+    else
+    {
+        return 4;
+    }
+    
 }
 -(UIImage*) imageForItemAtIndex:(NSInteger)index
 {
@@ -91,6 +108,18 @@ int current_index;
     [super viewDidLoad];
     
     
+    
+    current_index=0;
+    
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+//    [fav_temparray2 removeAllObjects];
+//    NSInteger pt=0,ps=0;
+    [self RefreshView];
+    
+    
     //    Added by jeethu
     GHContextMenuView* overlay = [[GHContextMenuView alloc] init];
     overlay.dataSource = self;
@@ -99,86 +128,8 @@ int current_index;
     UILongPressGestureRecognizer* _longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:overlay action:@selector(longPressDetected:)];
     [fav_view setUserInteractionEnabled:YES];
     [fav_view addGestureRecognizer:_longPressRecognizer];
+    
 
-    
-    current_index=0;
-    
-    
-//    // Do any additional setup after loading the view from its nib.
-//    fav_temparray1=[[NSMutableArray alloc] initWithCapacity:3];
-//    fav_temparray2=[[NSMutableArray alloc] initWithCapacity:3];
-//    fav_array=[NSArray alloc] ;
-//    [fav_temparray1 addObjectsFromArray:fps];
-//    
-//    fc=p=0;
-//    
-//    [self parsefunct];
-//    if(fav_array.count==0)
-//    {
-//        
-//    }
-//    else{
-//        while (fc<fav_array.count)
-//        {
-//            for(id factitem in fav_temparray1)
-//            {
-//                NSString *favfac=[fav_array objectAtIndex:fc];
-//                
-//                //  NSLog(@"foavfare: %@",favfac) ;
-//                if ([[[fav_temparray1 objectAtIndex:p]objectAtIndex:0]isEqualToString:favfac])
-//                    
-//                {
-//                    [fav_temparray2 addObject:[fav_temparray1 objectAtIndex:p]] ;
-//                    
-//                    p++;
-//                    break;
-//                } p++;
-//            }fc++;p=0;
-//        }
-////        fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:20.0];
-//        fav_view.text=[[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
-//        fav_txt= [[fav_temparray2 objectAtIndex:p]objectAtIndex:1];
-//        p++;
-//    }
-//    ip=NO;
-    
-    
-    
-    
-    
-    
-    
-    
-//    NSError *error;
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"favorites.plist"];
-//    
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    
-//    if (![fileManager fileExistsAtPath: path])
-//    {
-//        NSString *bundle = [[NSBundle mainBundle] pathForResource:@"favorites" ofType:@"plist"];
-//        
-//        [fileManager copyItemAtPath:bundle toPath: path error:&error];
-//    }
-//    
-//    NSMutableDictionary *fdata=[[NSMutableDictionary alloc] initWithContentsOfFile:path];
-//    NSArray *fav_array=[fdata objectForKey:@"fact_id"];
-//    
-//    _countLabel.text=[NSString stringWithFormat:@"0/%d",[fav_array count]];
-    
-    
-//    fav_view.textColor=[UIColor whiteColor];
-//    fav_view.TextAlignment=NSTextAlignmentCenter;
-//    fav_view.font=[UIFont fontWithName:@"MarkerFelt-Thin" size:k_DeviceTypeIsIpad?30.0:20.0];
-
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-//    [fav_temparray2 removeAllObjects];
-//    NSInteger pt=0,ps=0;
-    [self RefreshView];
   
 }
 -(void)RefreshView
@@ -203,18 +154,7 @@ int current_index;
     
     if(fav_index_message_array.count==0)
     {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-//                              
-//                                                        message:@"There are no favorite items"
-//                              
-//                                                       delegate:self
-//                              
-//                                              cancelButtonTitle:@"OK"
-//                              
-//                                              otherButtonTitles:nil];
-//        
-//        [alert show];
-        
+
         fav_view.text=@"Add facts to favorites";
     }
     else{
