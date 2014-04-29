@@ -37,6 +37,12 @@
 		4871DE9D18FFD1B1003D8785 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4871DE9C18FFD1B1003D8785 /* Reachability.m */; };
 		4871DEA018FFD59B003D8785 /* Ad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE9E18FFD59B003D8785 /* Ad.jpg */; };
 		4871DEA118FFD59B003D8785 /* AdiPad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4871DE9F18FFD59B003D8785 /* AdiPad.jpg */; };
+		48BB95CB190F70D50067C2DA /* CircularLayOutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BB95CA190F70D50067C2DA /* CircularLayOutView.m */; };
+		48BB95CE190F70DB0067C2DA /* XYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BB95CD190F70DB0067C2DA /* XYPoint.m */; };
+		48BB95D1190F70E10067C2DA /* RectButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BB95D0190F70E10067C2DA /* RectButtonView.m */; };
+		48BB95D5190F82BB0067C2DA /* bubble_facts.png in Resources */ = {isa = PBXBuildFile; fileRef = 48BB95D2190F82BB0067C2DA /* bubble_facts.png */; };
+		48BB95D6190F82BB0067C2DA /* bubble_jokes.png in Resources */ = {isa = PBXBuildFile; fileRef = 48BB95D3190F82BB0067C2DA /* bubble_jokes.png */; };
+		48BB95D7190F82BB0067C2DA /* bubble_twisters.png in Resources */ = {isa = PBXBuildFile; fileRef = 48BB95D4190F82BB0067C2DA /* bubble_twisters.png */; };
 		48C2BC9218E92D11002973DE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9118E92D11002973DE /* AdSupport.framework */; };
 		48C2BC9418E92D1B002973DE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9318E92D1B002973DE /* AudioToolbox.framework */; };
 		48C2BC9618E92D23002973DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9518E92D23002973DE /* AVFoundation.framework */; };
@@ -118,6 +124,15 @@
 		4871DE9C18FFD1B1003D8785 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4871DE9E18FFD59B003D8785 /* Ad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ad.jpg; sourceTree = "<group>"; };
 		4871DE9F18FFD59B003D8785 /* AdiPad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AdiPad.jpg; sourceTree = "<group>"; };
+		48BB95C9190F70D50067C2DA /* CircularLayOutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularLayOutView.h; sourceTree = "<group>"; };
+		48BB95CA190F70D50067C2DA /* CircularLayOutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularLayOutView.m; sourceTree = "<group>"; };
+		48BB95CC190F70DB0067C2DA /* XYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPoint.h; sourceTree = "<group>"; };
+		48BB95CD190F70DB0067C2DA /* XYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPoint.m; sourceTree = "<group>"; };
+		48BB95CF190F70E10067C2DA /* RectButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectButtonView.h; sourceTree = "<group>"; };
+		48BB95D0190F70E10067C2DA /* RectButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectButtonView.m; sourceTree = "<group>"; };
+		48BB95D2190F82BB0067C2DA /* bubble_facts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_facts.png; sourceTree = "<group>"; };
+		48BB95D3190F82BB0067C2DA /* bubble_jokes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_jokes.png; sourceTree = "<group>"; };
+		48BB95D4190F82BB0067C2DA /* bubble_twisters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_twisters.png; sourceTree = "<group>"; };
 		48C2BC9118E92D11002973DE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		48C2BC9318E92D1B002973DE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		48C2BC9518E92D23002973DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -206,6 +221,7 @@
 		480B155218F7AEDD00974EEA /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				48BB95C8190F70C70067C2DA /* CircularButton */,
 				4871DE9A18FFD1B1003D8785 /* Reachability */,
 				4871DE9118FFB61C003D8785 /* iToast */,
 				480B155B18F7CB4100974EEA /* XMLReader */,
@@ -235,6 +251,9 @@
 		480FF1C818F50A2400B0A937 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				48BB95D2190F82BB0067C2DA /* bubble_facts.png */,
+				48BB95D3190F82BB0067C2DA /* bubble_jokes.png */,
+				48BB95D4190F82BB0067C2DA /* bubble_twisters.png */,
 				4871DE9E18FFD59B003D8785 /* Ad.jpg */,
 				4871DE9F18FFD59B003D8785 /* AdiPad.jpg */,
 				4871DE9618FFC8DF003D8785 /* HelpScreenipad.jpg */,
@@ -288,6 +307,19 @@
 				4871DE9C18FFD1B1003D8785 /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		48BB95C8190F70C70067C2DA /* CircularButton */ = {
+			isa = PBXGroup;
+			children = (
+				48BB95CF190F70E10067C2DA /* RectButtonView.h */,
+				48BB95D0190F70E10067C2DA /* RectButtonView.m */,
+				48BB95CC190F70DB0067C2DA /* XYPoint.h */,
+				48BB95CD190F70DB0067C2DA /* XYPoint.m */,
+				48BB95C9190F70D50067C2DA /* CircularLayOutView.h */,
+				48BB95CA190F70D50067C2DA /* CircularLayOutView.m */,
+			);
+			name = CircularButton;
 			sourceTree = "<group>";
 		};
 		48C2BC8118E92C54002973DE /* AdMob */ = {
@@ -499,10 +531,13 @@
 				FC5F459818E3E3080064BC9A /* HomeViewController.xib in Resources */,
 				480FF1E418F50A5200B0A937 /* prev.png in Resources */,
 				FC5F45B618E3FC4F0064BC9A /* AboutViewController~ipad.xib in Resources */,
+				48BB95D6190F82BB0067C2DA /* bubble_jokes.png in Resources */,
 				480B155018F7AD1200974EEA /* home_iPad.jpg in Resources */,
+				48BB95D5190F82BB0067C2DA /* bubble_facts.png in Resources */,
 				FC5F45AF18E3F2F10064BC9A /* FavouriteViewController.xib in Resources */,
 				4871DEA118FFD59B003D8785 /* AdiPad.jpg in Resources */,
 				4871DE9818FFC8DF003D8785 /* HelpScreenipad.jpg in Resources */,
+				48BB95D7190F82BB0067C2DA /* bubble_twisters.png in Resources */,
 				480B155618F7C32B00974EEA /* funboxmaster.xml in Resources */,
 				480B155F18F7CB4200974EEA /* README.md in Resources */,
 				FC5F45A918E3EF530064BC9A /* FavouriteViewController~ipad.xib in Resources */,
@@ -541,9 +576,12 @@
 				4871DE9418FFB61C003D8785 /* UIView+Toast.m in Sources */,
 				FC5F45A818E3EF530064BC9A /* FavouriteViewController.m in Sources */,
 				FC5F45A318E3EF050064BC9A /* FactsViewController.m in Sources */,
+				48BB95D1190F70E10067C2DA /* RectButtonView.m in Sources */,
 				FC5F457918E3E19D0064BC9A /* HomeViewController.m in Sources */,
 				4871DE9D18FFD1B1003D8785 /* Reachability.m in Sources */,
+				48BB95CB190F70D50067C2DA /* CircularLayOutView.m in Sources */,
 				480FF1F018F513B900B0A937 /* GHContextMenuView.m in Sources */,
+				48BB95CE190F70DB0067C2DA /* XYPoint.m in Sources */,
 				480B156018F7CB4200974EEA /* XMLReader.m in Sources */,
 				FC5F45B318E3FC230064BC9A /* AboutViewController.m in Sources */,
 				FC5F457018E3E19D0064BC9A /* AppDelegate.m in Sources */,

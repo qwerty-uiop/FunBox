@@ -12,6 +12,9 @@
 #import "FavouriteViewController.h"
 #import "XMLReader.h"
 #import "Reachability.h"
+#import "XYPoint.h"
+#import "CircularLayOutView.h"
+#import "RectButtonView.h"
 
 @interface HomeViewController ()
 
@@ -24,7 +27,32 @@ FavouriteViewController * favourite_view;
 @synthesize parser,fun_facts;
 
 
-
+-(void)buttonClick:(NSString *)buttonName
+{
+    NSLog(@"Button name = %@",buttonName);
+   if([buttonName isEqualToString:@"fact"])
+    {
+        g_category=k_n_facts;
+        FactsViewController* facts_displayView =[[FactsViewController alloc] initWithNibName:@"FactsViewController" bundle:nil ];
+        
+        [self presentViewController: facts_displayView animated: NO completion:nil];
+    }
+    else if([buttonName isEqualToString:@"joke"])
+    {
+        g_category=k_n_jokes;
+        FactsViewController* facts_displayView =[[FactsViewController alloc] initWithNibName:@"FactsViewController" bundle:nil ];
+        
+        [self presentViewController: facts_displayView animated: NO completion:nil];
+    }
+    else
+        {
+            g_category=k_n_twisters;
+            FactsViewController* facts_displayView =[[FactsViewController alloc] initWithNibName:@"FactsViewController" bundle:nil ];
+            
+            [self presentViewController: facts_displayView animated: NO completion:nil];
+        }
+  
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -53,6 +81,31 @@ FavouriteViewController * favourite_view;
     {
         [self parse_xml];
     }
+    
+    
+//    Circular Button Implementation
+    CircularLayOutView *manger=[[CircularLayOutView alloc] init];
+    //manger.tager=self;
+    manger.MyDelegate=self;
+    XYPoint *centerPoint=[[XYPoint alloc] init];
+    centerPoint.xPoint=self.view.frame.size.width/2;
+    centerPoint.yPoint=self.view.frame.size.height/1.8;
+    manger.centerPoint=centerPoint;
+    XYPoint *buttonWeightAndHeight=[[XYPoint alloc] init];
+    buttonWeightAndHeight.xPoint=self.view.frame.size.width/4;
+    buttonWeightAndHeight.yPoint=self.view.frame.size.width/4;
+    manger.buttonWeightAndHeight=buttonWeightAndHeight;
+    manger.radius=self.view.frame.size.width/3;
+    NSArray *buttonNameArray=@[@"fact",@"joke",@"twister",@"fact",@"joke",@"twister"];
+    NSArray *buttonImageArray=[[NSArray alloc]initWithObjects:[UIImage imageNamed:@"bubble_facts"],[UIImage imageNamed:@"bubble_jokes"],[UIImage imageNamed:@"bubble_twisters"],[UIImage imageNamed:@"bubble_facts"],[UIImage imageNamed:@"bubble_jokes"],[UIImage imageNamed:@"bubble_twisters"], nil];
+    manger.buttonIndexBackGroundArray=buttonImageArray;
+    manger.buttonCount=6;
+    manger.buttonIndexNameArray=buttonNameArray;
+    
+    [manger creatUIToView:self.view target:nil];
+    
+    [self.view addSubview:manger];
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,10 +9,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GADBannerView.h"
+#import "CircularLayOutView.h"
 NSDictionary *master_data;
 NSString* g_category;
 @class FactClass;
-@interface HomeViewController : UIViewController<NSXMLParserDelegate>{
+@interface HomeViewController : UIViewController<NSXMLParserDelegate,CircularLayOutViewDelegate>{
 NSXMLParser *parser;
     GADBannerView *bannerView_;
     NSMutableArray *fun_facts;
