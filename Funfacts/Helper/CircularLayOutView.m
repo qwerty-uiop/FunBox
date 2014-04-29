@@ -248,12 +248,19 @@
   if(currentButton)
   {
 //      [UIView animateWithDuration:2 animations:<#^(void)animations#> completion:<#^(BOOL finished)completion#>]
-      [UIView animateWithDuration:0.3
+      [UIView animateWithDuration:0.2
                        animations:^{
-                           currentButton.frame = CGRectMake(currentButton.frame.origin.x-k_DeviceWidth/2,currentButton.frame.origin.y-k_DeviceWidth/2,currentButton.frame.size.width+k_DeviceWidth, currentButton.frame.size.height+k_DeviceWidth);
+                           currentButton.frame = CGRectMake(currentButton.frame.origin.x-25,currentButton.frame.origin.y-25,currentButton.frame.size.width+50, currentButton.frame.size.height+50);
                        }
                        completion:^(BOOL finished) {
-                           [self.MyDelegate buttonClick:currentButton.titleLabel.text];
+                           [UIView animateWithDuration:0.2
+                                            animations:^{
+                                                currentButton.frame = CGRectMake(currentButton.frame.origin.x+25,currentButton.frame.origin.y+25,currentButton.frame.size.width-50, currentButton.frame.size.height-50);
+                                            }
+                                            completion:^(BOOL finished) {
+                                                [self.MyDelegate buttonClick:currentButton.titleLabel.text];
+                                            }];
+
                        }];
       
 //
