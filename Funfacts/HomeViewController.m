@@ -30,12 +30,14 @@ FavouriteViewController * favourite_view;
 -(void)buttonClick:(NSString *)buttonName
 {
     NSLog(@"Button name = %@",buttonName);
-   if([buttonName isEqualToString:@"fact"])
+   if([buttonName isEqualToString:@"twister"])
     {
-        g_category=k_n_facts;
+        
+        g_category=k_n_twisters;
         FactsViewController* facts_displayView =[[FactsViewController alloc] initWithNibName:@"FactsViewController" bundle:nil ];
         
         [self presentViewController: facts_displayView animated: NO completion:nil];
+       
     }
     else if([buttonName isEqualToString:@"joke"])
     {
@@ -46,7 +48,8 @@ FavouriteViewController * favourite_view;
     }
     else
         {
-            g_category=k_n_twisters;
+            
+            g_category=k_n_facts;
             FactsViewController* facts_displayView =[[FactsViewController alloc] initWithNibName:@"FactsViewController" bundle:nil ];
             
             [self presentViewController: facts_displayView animated: NO completion:nil];
