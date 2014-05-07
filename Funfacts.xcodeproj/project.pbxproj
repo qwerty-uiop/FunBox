@@ -52,6 +52,7 @@
 		48C2BC9E18E92D53002973DE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BC9D18E92D53002973DE /* SystemConfiguration.framework */; };
 		48C2BCB718E93221002973DE /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2BCB518E93221002973DE /* libGoogleAdMobAds.a */; };
 		48C2BCB818E93221002973DE /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 48C2BCB618E93221002973DE /* README.txt */; };
+		48F7242C1919F24B00506BDC /* QWERTYUIOP.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48F7242B1919F24B00506BDC /* QWERTYUIOP.mp3 */; };
 		FC51758818F59D5400136698 /* favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC51758718F59D5400136698 /* favorites.plist */; };
 		FC5F456018E3E19D0064BC9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5F455F18E3E19D0064BC9A /* Foundation.framework */; };
 		FC5F456218E3E19D0064BC9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5F456118E3E19D0064BC9A /* CoreGraphics.framework */; };
@@ -151,6 +152,7 @@
 		48C2BCB418E93221002973DE /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
 		48C2BCB518E93221002973DE /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		48C2BCB618E93221002973DE /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		48F7242B1919F24B00506BDC /* QWERTYUIOP.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = QWERTYUIOP.mp3; sourceTree = "<group>"; };
 		FC51758718F59D5400136698 /* favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = favorites.plist; sourceTree = "<group>"; };
 		FC5F455C18E3E19D0064BC9A /* Funfacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funfacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC5F455F18E3E19D0064BC9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -270,6 +272,7 @@
 				480FF1CC18F50A5200B0A937 /* Background.jpg */,
 				480FF1CD18F50A5200B0A937 /* facebook.png */,
 				480FF1CE18F50A5200B0A937 /* Footer.png */,
+				48F7242B1919F24B00506BDC /* QWERTYUIOP.mp3 */,
 				480FF1D018F50A5200B0A937 /* home_4.jpg */,
 				480FF1D118F50A5200B0A937 /* land_graphic_bg_white.png */,
 				480FF1D218F50A5200B0A937 /* land_graphic_bg.png */,
@@ -551,6 +554,7 @@
 				480FF1DC18F50A5200B0A937 /* facebook.png in Resources */,
 				480FF1D918F50A5200B0A937 /* AboutUs.png in Resources */,
 				480FF1E318F50A5200B0A937 /* next.png in Resources */,
+				48F7242C1919F24B00506BDC /* QWERTYUIOP.mp3 in Resources */,
 				FC51758818F59D5400136698 /* favorites.plist in Resources */,
 				48C2BCB818E93221002973DE /* README.txt in Resources */,
 				4871DEA018FFD59B003D8785 /* Ad.jpg in Resources */,

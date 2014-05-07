@@ -45,8 +45,17 @@ HomeViewController * home_view;
         [self setCustomAd];
     }
     
-}
+    
+    //find URL to audio file
+    NSURL *qwSound   = [[NSBundle mainBundle] URLForResource: @"QWERTYUIOP" withExtension: @"mp3"];
+    //initialize SystemSounID variable with file URL
+    AudioServicesCreateSystemSoundID (CFBridgingRetain(qwSound), &qwSoundObj);
+      AudioServicesPlaySystemSound(qwSoundObj);
 
+}
+- (void)viewDidUnload {
+    AudioServicesDisposeSystemSoundID(qwSoundObj);
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
